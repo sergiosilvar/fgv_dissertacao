@@ -1,0 +1,1 @@
+python -c "import captura as c; c.captura_apartamentos();"

@@ -1,0 +1,1 @@
+python -c "import google as g; g.geolocaliza_ruas()"
