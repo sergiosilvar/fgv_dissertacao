@@ -29,6 +29,24 @@ def get(sql,id_='id',con=None):
 def get_geo(sql, con=None):
     if con == None: con = d.conecta_db()
     return gd.GeoDataFrame.from_postgis(sql, con)
+    
+tam_fig_original = None
+def tam_figura(largura=None, altura=None):
+    if tam_fig_original == None:
+        tam_fig_original = rcParams['figure.figsize']
+
+    if largura == None and altura == None:
+        rcParams['figure.figsize'] = tam_fig_original
+    if largura != None and altura == None:
+        rcParams['figure.figsize'] = [largura*i for i in tam_fig_original]
+    if largura != None and altura == None:
+        rcParams = [largura, altura]
+    if largura == None and altura != None:
+        raise Exception('Ou ambos as variáveis são nulas ou somente "largura" é definida.')
+    
+        
+        
+            
  
 def remove_acento(str_or_list):
     troca = []
@@ -60,4 +78,5 @@ def remove_acento(str_or_list):
         return unicodedata.normalize('NFKD', str_or_list).encode('ascii', 'ignore')
 
     
-    return 'ERRO: ''unicode'', ''str'' ou ''list'' esperado. ' + str(type(str_or_list)) + ' encontrado.'
+    msg =  'ERRO: ''unicode'', ''str'' ou ''list'' esperado. ' + str(type(str_or_list)) + ' encontrado.'
+    raise Exception(msg)
