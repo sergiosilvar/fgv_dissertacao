@@ -6,7 +6,16 @@ import psycopg2
 from mpltools import style
 import unicodedata
 import geopandas as gd
+from scipy.stats import norm as gauss, probplot, cumfreq
+from matplotlib import rcParams
+from  matplotlib.pyplot import figure, xlim, ylim,pcolor, colorbar, xticks, \
+    yticks
+from numpy import linspace, arange
+
+
 style.use('ggplot')
+
+
 
 x = os.getcwd()
 l = x.rfind('\\')
@@ -80,3 +89,112 @@ def remove_acento(str_or_list):
     
     msg =  'ERRO: ''unicode'', ''str'' ou ''list'' esperado. ' + str(type(str_or_list)) + ' encontrado.'
     raise Exception(msg)
+    
+def plot_residual(smres):
+    
+    resid_std = (smres.resid-smres.resid.mean())/smres.resid.std()
+    fig = figure()
+    w,h = rcParams['figure.figsize']
+    fig.set_size_inches(w*2,h*2)
+    ylim_ = (resid_std.min()*1.01,resid_std.max()*1.01)
+    xlim_ = (smres.fittedvalues.min(),smres.fittedvalues.max())
+    ax = fig.add_subplot(221)
+    probplot(resid_std, plot=ax);
+    ylim(ylim_);
+
+    
+    ax = fig.add_subplot(222)
+    ax.scatter(smres.fittedvalues,resid_std);
+    
+    # TODO: Parou de funcionar, substituido pelo codigo logo a seguir.
+    #ax.axhline(y=smres.resid.mean(),
+    #           xmin=smres.fittedvalues.min(),
+    #           xmax=smres.fittedvalues.max(),color='r');
+    x = linspace(smres.fittedvalues.min(),smres.fittedvalues.max(),5)
+    y = [smres.resid.mean() for i in range(len(x))]
+    ax.plot(x,y, 'r-', linewidth=2)
+
+    xlim(xlim_);
+    ylim(ylim_);
+
+    ax = fig.add_subplot(223)
+    ax.hist(resid_std,50);
+
+    from matplotlib.colors import LogNorm
+    ax = fig.add_subplot(224)
+    ax.hexbin(smres.fittedvalues,resid_std, norm=LogNorm());
+    ax.axhline(y=smres.resid.mean(),xmin=smres.fittedvalues.min(),xmax=smres.fittedvalues.max(),color='r');
+    xlim(xlim_);
+    ylim(ylim_);
+
+def prep_formula(dataframe, dataframe_name, var_dep='preco'):
+    
+        
+
+    # Determinar colunas que são identificadoers para serem removidos.
+    cols_ids = set([c for c in dataframe.columns if c.find('id_')>-1])
+
+    # Identificar colunas que contém valores ausentes.
+    s = dataframe.isnull().sum()
+    cols_nulos = set(s[s>0].index.tolist())
+
+    # Colunas que são variáveis dependentes.
+    cols_dep = set(['m2','preco'])
+
+    # Juntar todas as colunas a serem removidas do modelo.
+    cols_excluded = cols_ids.union(cols_nulos).union(cols_dep)
+
+    # Definir as variáveis para o modelo.
+    cols = set(dataframe.columns) - cols_excluded
+
+    # Construir a fórmula.
+    formula = dataframe_name + '.' + var_dep + ' ~ ' +  \
+        ' + '.join([dataframe_name + '.'+c for c in cols])
+    
+    return formula, cols, cols_excluded    
+    
+def plot_corrmatrix(matrix, figsize=(8*1.05, 6*1.05),**args):
+
+    figure(figsize=figsize)
+    pcolor(matrix,**args);
+    colorbar();
+
+    max_ = len(matrix);
+    yticks(arange(0.5,max_+0.5), range(0,max_));
+    xticks(arange(0.5,max_+0.5), range(0,max_));
+    
+    
+def cols_autocorr(matrix, threshold = 0.69999):
+    from numpy import tril
+    matrix.loc[:,:] =  tril(matrix, k=-1) # borrowed from Karl D's answer
+
+    already_in = set()
+    result = {}
+    for col in matrix:
+        perfect_corr = matrix[col][abs(matrix[col]) > threshold].index.tolist()
+        #if perfect_corr and col not in already_in:
+        #    already_in.update(set(perfect_corr))
+        #    perfect_corr.append(col)
+        #    cols_autocorr.append(perfect_corr)
+        if len(perfect_corr) > 0:
+            result[col] = [i+'({:.2f})'.format(matrix[col][i]) for i in perfect_corr]
+
+    return result             
+    
+def print_autocorr(dataframe,cols_excluded=[]):
+    if type(cols_excluded) != set:
+        cols_excluded = set(cols_excluded)
+    # Selecionar as colunas do modelo.
+    valid_cols  = set(dataframe.columns.tolist()) - cols_excluded
+    valid_cols = list(valid_cols)
+
+
+    matrix_corr = dataframe[valid_cols].corr()
+
+    cols_autoc = cols_autocorr(matrix_corr)
+
+
+    print 'Coluna'.ljust(20),'|', 'Autocorrelacionada com '.ljust(50)
+    for k,c in cols_autoc.iteritems():
+        print str(k).ljust(20),':', str(c).ljust(50)
+    
