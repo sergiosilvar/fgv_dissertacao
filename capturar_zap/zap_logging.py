@@ -11,7 +11,7 @@ logFormatter = logging.Formatter('%(asctime)s - %(module)s:%(lineno)s - %(leveln
 
 
 log = logging.getLogger()
-log.setLevel(logging.DEBUG)
+log.setLevel(logging.ERROR)
 consoleHandler = logging.StreamHandler()
 consoleHandler.setFormatter(logFormatter)
 log.addHandler(consoleHandler)
