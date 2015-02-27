@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: latin-1 -*-
 
 import sys,os; 
 import pandas as pd
@@ -9,11 +9,10 @@ import geopandas as gd
 from scipy.stats import norm as gauss, probplot, cumfreq
 from matplotlib import rcParams
 from  matplotlib.pyplot import figure, xlim, ylim,pcolor, colorbar, xticks, \
-    yticks
-from numpy import linspace, arange
+    yticks, subplots
+from numpy import linspace, arange,std, polyfit, polyval,sqrt
 
 
-style.use('ggplot')
 
 
 
@@ -26,6 +25,10 @@ import dataset as d
 
 # Connect to an existing database
 con = psycopg2.connect("dbname=zap user=postgres")
+
+def set_style(sty='ggplot'):
+    style.use(sty)
+
 
 def exec_sql(sql, con=None):
     if con == None: con = d.conecta_db()
@@ -51,7 +54,7 @@ def tam_figura(largura=None, altura=None):
     if largura != None and altura == None:
         rcParams = [largura, altura]
     if largura == None and altura != None:
-        raise Exception('Ou ambos as vari√°veis s√£o nulas ou somente "largura" √© definida.')
+        raise Exception('Ou ambos as variaveis sao nulas ou somente "largura" eh definida.')
     
         
         
@@ -59,18 +62,18 @@ def tam_figura(largura=None, altura=None):
  
 def remove_acento(str_or_list):
     troca = []
-    troca.append( {'de':['√°','√¢','√£','√§','√†'], 'para':'a'})
-    troca.append( {'de':['√Å','√Ç','√É','√Ñ','√Ä'], 'para':'A'})
-    troca.append( {'de':['√©','√™','√´','√®'], 'para':'e'})
-    troca.append( {'de':['√â','√ä','√ã','√à'], 'para':'E'})
-    troca.append( {'de':['√≠','√Æ','√Ø','√¨'], 'para':'i'})
-    troca.append( {'de':['√ç','√é','√è','√å'], 'para':'I'})
-    troca.append( {'de':['√≥','√¥','√∂','√µ','√≤'], 'para':'o'})
-    troca.append( {'de':['√ì','√î','√ñ','√ï','√í'], 'para':'O'})
-    troca.append( {'de':['√∫','√ª','√º','√π'], 'para':'u'})
-    troca.append( {'de':['√ö','√õ','√ú','√ô'], 'para':'U'})
-    troca.append( {'de':['√ß'], 'para':'c'})
-    troca.append( {'de':['√á'], 'para':'C'})
+    troca.append( {'de':['·','‡','„','‰','‚'], 'para':'a'})
+    troca.append( {'de':['¡','¿','√','ƒ','¬'], 'para':'A'})
+    troca.append( {'de':['È','Ë','Î','Í'], 'para':'e'})
+    troca.append( {'de':['…','»','À',' '], 'para':'E'})
+    troca.append( {'de':['Ì','Ï','Ô','Ó'], 'para':'i'})
+    troca.append( {'de':['Õ','Ã','œ','Œ'], 'para':'I'})
+    troca.append( {'de':['Û','Ú','ˆ','ı','Ù'], 'para':'o'})
+    troca.append( {'de':['”','“','÷','’','‘'], 'para':'O'})
+    troca.append( {'de':['˙','˘','¸','˚'], 'para':'u'})
+    troca.append( {'de':['⁄','Ÿ','‹','€'], 'para':'U'})
+    troca.append( {'de':['Á'], 'para':'c'})
+    troca.append( {'de':['«'], 'para':'C'})
     troca.append( {'de':['(', ')','[',']'], 'para':'_'})
 
     if type(str_or_list) == str:
@@ -127,28 +130,32 @@ def plot_residual(smres):
     xlim(xlim_);
     ylim(ylim_);
 
-def prep_formula(dataframe, dataframe_name, var_dep='preco'):
+def prep_formula(dataframe, dataframe_name, var_dep='preco', func=None):
     
         
 
-    # Determinar colunas que s√£o identificadoers para serem removidos.
+    # Determinar colunas que s„o identificadoers para serem removidos.
     cols_ids = set([c for c in dataframe.columns if c.find('id_')>-1])
 
-    # Identificar colunas que cont√©m valores ausentes.
+    # Identificar colunas que contÈm valores ausentes.
     s = dataframe.isnull().sum()
     cols_nulos = set(s[s>0].index.tolist())
 
-    # Colunas que s√£o vari√°veis dependentes.
+    # Colunas que s„o vari·veis dependentes.
     cols_dep = set(['m2','preco'])
 
     # Juntar todas as colunas a serem removidas do modelo.
     cols_excluded = cols_ids.union(cols_nulos).union(cols_dep)
 
-    # Definir as vari√°veis para o modelo.
+    # Definir as vari·veis para o modelo.
     cols = set(dataframe.columns) - cols_excluded
 
-    # Construir a f√≥rmula.
-    formula = dataframe_name + '.' + var_dep + ' ~ ' +  \
+    # Construir a fÛrmula.
+    if func != None: 
+        yname = '{}({}.{}) '.format(func, dataframe_name, var_dep)   
+    else:
+        yname = '{}.{} '.format(dataframe_name, var_dep)
+    formula = yname + ' ~ ' +  \
         ' + '.join([dataframe_name + '.'+c for c in cols])
     
     return formula, cols, cols_excluded    
@@ -193,8 +200,62 @@ def print_autocorr(dataframe,cols_excluded=[]):
 
     cols_autoc = cols_autocorr(matrix_corr)
 
-
-    print 'Coluna'.ljust(20),'|', 'Autocorrelacionada com '.ljust(50)
-    for k,c in cols_autoc.iteritems():
-        print str(k).ljust(20),':', str(c).ljust(50)
+    if len(cols_autoc) == 0:
+        print 'N√£o h√° colunas autocorrelacionadas.'
+    else:
+        print 'Coluna'.ljust(20),'|', 'Autocorrelacionada com '.ljust(50)
+        for k,c in cols_autoc.iteritems():
+            print str(k).ljust(20),':', str(c).ljust(50)
     
+def scatter_distancia(dfx,suptitle=None):
+    # Colunas que representam dist‚ncias.
+    dist_columns = sorted([c for c in dfx.columns if c.find('dist_') > -1])
+
+   
+    # Definir tamanho do gr·fico.
+    w,h = rcParams['figure.figsize']
+    f,a = subplots(len(dist_columns), 2)
+    f.set_size_inches(w*2, h*len(dist_columns))
+    
+    
+    # TÌtulo central da figura.
+    if suptitle != None:
+        f.suptitle(suptitle)
+    
+    # Plotar gr·ficos.
+    for i in range(len(dist_columns)):
+        col_name = dist_columns[i]
+        x = dfx[col_name]
+        fx = linspace(x.min(),x.max(),50)
+        
+        a[i, 0].scatter(x, dfx.preco)
+        p = polyfit(x,dfx.preco,1)
+        a[i, 0].plot(fx, polyval(p,fx), linewidth=2)
+        a[i, 0].set_title(col_name + u' x pre√ßo')
+        
+        a[i, 1].scatter(x,dfx.m2)
+        p = polyfit(x,dfx.m2,1)
+        a[i, 1].plot(fx, polyval(p,fx), linewidth=2)
+        a[i, 1].set_title(col_name + u' x $R\$/m^2$')
+
+        
+def plot_boxhist(x,titulo=None,xlabel=None):
+    f,a = subplots(2,1)
+    a0,a1 = a.ravel()
+    bp = a0.boxplot(x,vert=False);
+    a0.text(max(x)*0.8,1.2, 
+        s='$3\sigma$={:.2f}'.format(3*std(x)), 
+        bbox={'facecolor':'w', 'pad':10, 'alpha':0.5},
+        style='italic',fontsize=15)
+    
+    a1.hist(x,bins=30);
+    
+    if titulo != None: 
+        a0.set_title(titulo);
+    if xlabel != None:
+        a1.set_xlabel(xlabel);
+        
+        
+def rmse(resid):
+    return sqrt((resid**2/len(resid)).sum())
+        
