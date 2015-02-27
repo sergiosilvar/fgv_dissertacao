@@ -1,0 +1,29 @@
+\usepackage{verbatim}
+
+\makeatletter
+\newwrite\Code@out
+
+\newcommand\python{\obeylines\expandafter\pythonArg\noexpand}
+
+\newcommand\pythonArg[1][tmp.py.in]{%
+    \gdef\FNameIn{#1}
+    \gdef\FNameOut{tmp.py.out}
+    \begingroup
+        \@bsphack%
+        \immediate\openout\Code@out\FNameIn%
+        \let\do\@makeother\dospecials%
+        \catcode`\^^M\active%
+        \def\verbatim@processline{%
+            \immediate\write\Code@out{\the\verbatim@line}}%
+        \verbatim@start}
+
+\def\endpython{%
+        \immediate\closeout\Code@out\@esphack
+    \endgroup
+
+     %Execute python script. Python directory must be in PATH.
+     \immediate\write18{python \FNameIn > \FNameOut}
+     \input{\FNameOut}
+}
+
+\makeatother

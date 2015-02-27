@@ -1,0 +1,206 @@
+\pagestyle{empty}
+\cleardoublepage
+\pagestyle{fancy}
+
+\chapter{Metodologia}\label{chap:metodologia}
+
+
+\section{Descrição dos dados}\label{sec:descricao_dados}
+
+\begin{table}[htp]
+	\begin{center}
+		\begin{tabular}{|c|c|}
+\hline
+
+\textbf{Variável} & \textbf{Definição da variável}  \\ 
+\hline Área & Área do imóvel \\ 
+\hline Condomínio & Valor do condomínio \\ 
+\hline Quartos & Quantidade de quartos \\ 
+\hline Suíte & Presença de suíte. Com suíte = 1, sem suíte = 0. \\ 
+\hline 
+\end{tabular} 
+\end{center}
+\end{table}
+
+\section{Obtenção dos dados}
+
+\subsection{Informações sobre os imóveis}\label{sec:captura_zap}
+
+O ZAP Imóveis\footnote{ZAP Imóveis: \url{http://www.zapimoveis.com.br/}.} é um serviço de classificados de imóveis na Internet onde proprietários de imóveis, sejam pessoas físicas ou jurídicas, anunciam-os detalhando informações que consideram relevantes a quem procura comprá-los. Essas informações foram coletadas para esse estudo pela técnica conhecida como \textit{Web Scrapping}.
+
+A técnica de \textit{Web Scrapping} consiste em obter informações disponíveis na Internet, por meio de um algoritmo construído para percorrer a estrutura do recurso onde a informação está, identificá-la e descobrir outros recursos que possam contê-la. Para que se possa implementar o algoritmo com as decisões adequadas à estrutura do meio é feito um estudo \textit{a priori} buscando-se encontrar padrões de repetição e palavras chaves que se associem de alguma forma à informação desejada. Tal atividade é bastante facilitada quando o meio em questão é uma página HTML\footnote{Do inglês \textit{HTML: HyperText Markup Language}.} que por definição\footnote{Definição de HTML: \url{http://www.w3.org/html.}} é um documento de texto estruturado em segmentos idenitificados por palavras chaves\footnote{Do inglês \textit{tags}. Tradução nossa.}. 
+
+Dentro da linguagem de programação Python utilizada nesse estudo, recorremos à biblioteca Requests\footnote{Requests: \url{http://docs.python-requests.org/en/latest/.}} para o \textit{download} das páginas HTML do ZAP Imóveis em memória, e a  biblioteca BeautifulSoap\footnote{BeautifulSoap: \url{http://www.crummy.com/software/BeautifulSoup}.} para percorrer a estrutura HTML, identificar as informações desejadas e descobrir novas páginas com mais anúncios.
+
+Obtivemos as seguintes informações para todos os imóveis:
+
+\begin{enumerate}
+\item Nome da rua;
+\item Bairro;
+\item Área cosntruída;
+\item Quantidade de quartos;
+\item Quantidade de suítes;
+\item Quantidade de vagas de garagem;
+\item Data da publicação do anúncio;
+\item Valor anunciado do imóvel;
+\end{enumerate}
+
+Alguns anúncios continham informações adicionais como:
+\begin{enumerate}
+\item Valor do condomínio;
+\item Localização geográfica: latitude e longitude;
+\item Características estruturais do imóvel: varanda, dependência de empregada, sala de jantar, etc;
+\item Características do condomínio: piscina, sauna, portaria 24 horas, etc.
+\end{enumerate}
+
+\subsection{Distâncias dos imóveis a pontos de interesse}
+
+A fim de tentar minimizar os efeitos da autocorrelação espacial da variável preço buscamos criar variáveis de distâncias dos imóveis aos seguintes pontos de interesse:
+
+\begin{enumerate}
+\item Praias;
+\item Lagoas;
+\item Estabelecimentos de Saúde;
+\item Estações de Metrô;
+\item Delegacias da Polícia Civil;
+\item Unidades do Corpo de Bombeiros;
+\item Favelas;
+\item Principais logradouros;
+\item Centro da cidade do Rio de Janeiro.
+\end{enumerate}
+
+A seguir detalharemos a coleta de cada uma dessas informações.
+
+
+
+\subsubsection{Informações obtidas do Mapa Digital do Rio de Janeiro}
+
+A localização de favelas, delegacias de Polícia Civil, unidades do Corpo de Bombeiros, principais logradouros, estações de trem e metrô foram obtidas da ferramenta Mapa Digital do Rio de Janeiro\footnote{Mapa Digital do Rio de Janeiro: \url{http://portalgeo.rio.rj.gov.br/mapa_digital_rio/?config=config/ipp/basegeoweb.xml}}, mantido pelo Instituto Municipal de Urbanismo Pereira Passos, órgão da  Preferitura Municipal do Rio de Janeiro responsável pela produção, armazenamento e divulgação de dados estatísticos sobre o município. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{img/tela_mapa_digital_rio}
+\caption{Tela Inicial do Mapa Digital do Rio de Janeiro.}
+\label{fig:tela_mapa_digital}
+\end{figure}
+
+
+O Mapa Digital do Rio de Janeiro é uma aplicação acessível pela Internet, desenvolvida na tecnologia ArcGIS da empresa ESRI, e permite ao usuário selecionar diversas camadas de informações georreferenciadas para toda a cidade ou uma área delimitada pelo usuário. Após a seleção das camadas de interesse é feito o \textit{download} das informações em arquivo no formato \textit{shapefile}, um formato proprietário da ESRI para ser utilizado em suas ferramentas, entretanto bastante popular na comunidade de Sistemas de Informações Georreferenciadas. O formato shapefile oferecido pelo Mapa Digital compõe-se de 4 arquivos distintos identificados por extensões que compartilham o mesmo nome:
+
+\begin{description}
+\item[arquivo .shp] contém as coordenadas dos pontos, linhas e polígonos, comumente chamados de geometrias, dos elementos georreferenciados a serem projetados em uma visualização, impressão, ou utilizado em análises geoespaciais;
+\item[arquivo .shx] armazena índices para otimizar operações de acesso e leitura das geometrias no arquivo .shp;
+\item[arquivo .dbf] contém os atributos, informações não espaciais, dos elementos georreferenciados;
+\item[arquivo .sbn] armazena índices espaciais para otimizar operações de análises georreferenciadas.
+\end{description}
+
+Importamos os arquivos shapefile para o banco de dados PostgreSQL utilizado no estudo com o seguinte comando no Windows:
+
+\begin{lstlisting}[language=command.com, float=htpb, caption=Importar \textit{shapefiles} para o banco de dados PostGIS., label=lst_importa_shp]
+for %%f in (*.shp) do 
+	shp2pgsql -d -W LATIN1 -I -s 29193:4326 %%f pgr_%%~nf > pgr_%%~nf.sql;
+for %%f in (*.sql) do 
+	psql -d postgresql://postgres:1234@localhost/zap -f %%f;
+\end{lstlisting}
+
+O primeiro laço seleciona os arquivos de extensão \textbf{.shp} localizados na pasta em uso e cria arquivos com extenão \textbf{.sql}, e sufixo "pgr" para facilitar a identificação das tabelas criadas, com comandos SQL para a criação de tabela e cadastro dos valores. A seguir detalhamos as opções utilizadas:
+
+\begin{description}
+\item[-d ] determina sobreescrever a tabela caso ela já exista, o nome da tabela é o nome do arquivo \textbf{.shp};
+\item[-W ] código UNICODE do texto dos atributos no arquivo .dbf, em nosso caso LATIN1;
+\item[-I ] cria índice espacial para otimizar análises geográficas;
+\item[-s ] transformar SRID, Identificador do Sistema de Referência Espacial\footnote{Do termo em inglês \textit{Spatial Reference System Identifier}, tradução nossa.}, em nosso caso do SRID 29193, utilizado pelo Mapa Digital, para o SRID 4326, escolhido como padrão para esse estudo.
+\end{description}
+
+O segundo laço executa os comandos nos arquivos .sql da pasta em uso no banco de dados definido pela opção \textbf{-d}.
+
+Decidimos registrar apenas a menor distância para cada imóvel a cada um desses elementos com objetivo de minimizar a quantidade de informações a serem utilizadas no estudo. Tomando como exemplo Corpo de Bombeiros, após a importação \textit{shapefile} para a tabela "pgr\_corpo\_de\_bombeiros", o seguinte comando SQL cria uma visão materializada, uma espécie de consulta de banco de dados que fica armazenada em disco para otimizar acessos futuros, associando cada imóvel ao corpo de bombeiro mais próximo e a distância entre eles: 
+
+\begin{lstlisting}[language=SQL, float=htpb, caption=Exemplo de cálculo de menor distância por SQL., label=lst_calc_dist_sql]
+CREATE MATERIALIZED VIEW vw_dist_bombeiro AS
+SELECT DISTINCT ON (s.id) 	s.id, h.gid, h.nome, ST_Distance(s.geom, h.geom, true)
+	FROM vw_imovel s
+	JOIN pgr_corpo_de_bombeiros h ON ST_DWithin(s.geom, h.geom, 9999)
+ORDER BY 1, 4
+\end{lstlisting}
+
+Delegacias, bombeiros, estações de trem e metrô são georreferenciados como pontos e a distância calculada é a distância entre eles e o imóvel. Os principais logradouros são georreferenciados como múltiplas linhas, sendo assim a distância calculada é a tangente da linha mais próxima do logradouro ao imóvel. Por último, as favelas, lagoas são georreferenciadas como múltiplos polígonos, sendo a distância calculada a tangente do contorno mais próximo desses elementos ao imóvel.
+
+
+\subsubsection{Estabelecimentos de Saúde}
+
+As localizações dos estabelecimentos de saúde foram coletadas do Portal de Dados Abertos da Prefeitura do Rio de Janeiro\footnote{Portal de Dados Abertos da Prefeitura do Rio de Janeiro: \url{http://data.rio.rj.gov.br/}}. Esse portal disponibiliza várias informações de interesse público a respeito da cidade do Rio de Janeiro em formato tabular CSV\footnote{\textit{Comma-separated values}: \url{http://en.wikipedia.org/wiki/Comma-separated_values}} já com o SRID 4326.
+
+As informações dos estabelecimentos de saúde foram importados para o banco de dados seguindo as instruções em Python abaixo:
+
+\begin{lstlisting}[language=Python, numbers=left]
+import zap_util as z
+# Importa arquivo CSV para um dataframe.
+df = z.pd.read_csv('../gis/data.rio/Estabelecimentos de Saude - Dados.csv',  encoding='iso-8859-1',  dtype=str)
+
+# Remove acentos dos nomes das colunas e e todos os valores.
+df.columns =  z.remove_acento(list(df.columns.values))
+df.applymap(z.remove_acento)
+
+# Salva dataframe no banco de dados.
+z.d.salva_dataframe(df, '_estabelecimento_saude', index=False)
+
+# Cria campo para armazenar a coordenada geografica nativamente. 
+z.d.__executar('ALTER TABLE _estabelecimento_saude ADD COLUMN  geom geometry(Point,4326);')
+
+#Cria a geometria com base na Latitude e Longitude.
+z.d.__executar('update _estabelecimento_saude set geom = ' + \
+    ' st_geomfromtext(\'POINT(\'||"Longitude"||\' \'||"Latitude"||\')\', 4326)')
+
+# Cria chave primaria para a tabela.
+z.d.__executar('ALTER TABLE _estabelecimento_saude' + 
+  ' ADD CONSTRAINT pk__estabelecimento_saude PRIMARY KEY("CNES");' )
+\end{lstlisting}
+
+O módulo "zap\_util" importado na linha 1 contém diversas funções criadas para esse estudo e encontra-se listado no \cref{ap:listagem_zap_util}. Para esse estudo separamos os estabelecimentos em dois conjuntos, administração pública e privada, e calculamos a distância dos imóveis a cada um destes conjuntos a partir da geometria do tipo ponto criada com as informações de latitude e longitude. Os demais dados  presentes no arquivo não foram utilizados.
+
+\subsubsection{Praias}
+
+A geometria das praias que circundam a cidade do Rio de Janeiro foram capturadas do serviço Open Street Map\footnote{Open Street Map: \url{https://www.openstreetmap.org}.}, um serviço colaborativo de registro e consulta de informações georreferenciadas, similar ao Google Maps, mas cuja licença de uso \textit{Open Database License} garante acesso gratuito para compartilhar, modificar e usar os dados disponíveis livremente. 
+
+A obtenção dos dados foi facilitada como uso do \textit{plugin} QuickOSM para o software Quantum GIS. Esse \textit{plugin} permite fazer o \textit{download} das informações disponíveis no Open Street Map que intersectem a área definida por retângulo de coordenadas personalizadas. Em nosso caso, utilizamos \textit{software} a geometria da cidade do Rio de Janeiro para determinar as coordenadas de um retângulo circunscrito à cidade. Essas coordenadas foram passadas ao plugin, em conjunto com um filtro para obter somente informações sobre praias. O plugin faz o  download das informações pertinentes em um arquivo temporário. Como  retângulo circunscrito à cidade traz informações de outras cidades vizinhas, filtramos as praias de interesse realizando nova análise espacial, desta vez no \textit{software} Quantum GIS, para selecionar somente geometrias das praias contidas dentro da área definida pela geometria da cidade do Rio de Janeiro. Por fim, essa seleção é salva no formato \textit{shapefile} e importadas para o banco de dados conforme descrito na listagem \ref{lst_importa_shp}. O cálculo da distância é similar ao exemplo apresentado na listagem \ref{lst_calc_dist_sql}.
+
+\subsubsection{Centro da cidade do Rio de Janeiro}
+
+Definimos arbitrariamente o centro da cidade como a localização geográfica da estação de metrô Carioca, na Avenida Rio Branco, cujas coordenadas são \todo{colocar as coordenadas do centro aqui} em função da proximidade a essa avenida que agrega um grande número de escritórios, centros médicos e repartições publicas ao longo de seu entorno, \cref{fig:loc_metro_carioca}. Construímos 3 distâncias a partir deste ponto para cada imóvel: uma distância euclidiana até a localização definida, a distância até a localização definida somente na dimensão da latitude e a última somente na dimensão da longitude. Com essas duas últimas esperamos poder verificar a contribuição da distância em relação aos eixos Norte-Sul e Leste-Oeste para os preços dos imóveis.
+
+\subsection{Dados sócio econômicos}
+
+O menor nível de agregação dos dados sócio econômicos que encontramos para a cidade do Rio de Janeiro foram por bairros, restringindo sua utilização apenas para regressões considerando mais de um bairro. Os dados selecionados para comporem a análise foram:
+
+\begin{description}
+\item[Índice de Desenvolvimento Humano];
+\item[Média de anos de estudo];
+\item[Percentual de alfabetização];
+\item[Rendimento nominal médio];
+\item[Saneamento];
+\item[Taxa de crimes violentos];
+\item[Taxa de roubos ao patrimônio].
+\end{description}
+
+
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\linewidth]{img/loc_metro_carioca}
+\caption{Localização da Estação de Metrô Carioca, definido como o centro da cidade.}
+\label{fig:loc_metro_carioca}
+\end{figure}
+
+
+\section{Tratamento dos dados}
+
+O tratamento dos dados é o passo necessário para a garantir da qualidade dos dados de forma a que o modelo a ser proposto possa ser construído dentro das condições ideias, evitando perturbações não conhecidas por erros, inconsistência ou presença de valores muito além do limite esperado.\todo{Referência para outliers?}
+
+A seguir plotamos a distribuição de preços encontrados no conjunto de dados capturado.
+
+
+
+
+Como os dados da pesquisa foram obtidos utilizando a técnica de Web Scrapping \ref{sec:webscrap} a partir de uma origem estruturada, assume-se que 

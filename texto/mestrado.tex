@@ -1,0 +1,122 @@
+
+% Mestre em LaTeX - v0.5
+% Copyleft 2008-2013 Bruno C. Vellutini - http://organelas.com/
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+%
+% Ou seja, utilize e modifique os arquivos como desejar.
+% 
+% Para mais informações visite http://nelas.github.com/mestre-em-latex/
+
+% Classe do documento
+\documentclass[twoside,a4paper,11pt]{report}
+
+% Pacotes e comandos customizados
+\include{meta}
+
+\newcommand\nota[1]{\todo[]{#1}}
+\renewcommand{\nomedoaluno}{Sérgio da Silva Rodrigues}
+\renewcommand{\titulo}{Aplicação de Aprendizagem por Máquinas para estimação de preço de imóveis na cidade do Rio de Janeiro}
+
+\usepackage{todonotes}
+\usepackage{fancyref}
+%\usepackage{python}
+\usepackage{svg}
+
+
+
+\usepackage{tikz} % Desenhar gráficos.
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,%
+    decorations.pathreplacing,decorations.pathmorphing,shapes,%
+    matrix,shapes.symbols}
+
+\tikzset{
+>=stealth',
+  punktchain/.style={
+    rectangle, 
+    rounded corners, 
+    % fill=black!10,
+    draw=black, very thick,
+    text width=10em, 
+    minimum height=3em, 
+    text centered, 
+    on chain},
+  line/.style={draw, thick, <-},
+  element/.style={
+    tape,
+    top color=white,
+    bottom color=blue!50!black!60!,
+    minimum width=8em,
+    draw=blue!40!black!90, very thick,
+    text width=10em, 
+    minimum height=3.5em, 
+    text centered, 
+    on chain},
+  every join/.style={->, thick,shorten >=1pt},
+  decoration={brace},
+  tuborg/.style={decorate},
+  tubnode/.style={midway, right=2pt},
+}
+
+
+
+% scientific notation, 1\e{9} will print as 1x10^9
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+\usepackage{amsmath} % needed for pmatrix
+\usepackage{graphicx}           % include figures
+\usepackage{hyperref}           % links
+\usepackage{cleveref}
+\usepackage{siunitx}
+\usepackage{booktabs}           % Fancy tables
+\usepackage{caption}            % Fixes spacing between caption and table-
+
+\definecolor{light-gray}{gray}{0.95} %the shade of grey that stack exchange uses
+\usepackage{courier}
+\usepackage{listing}
+\usepackage{listings}
+\lstset{basicstyle=\small\ttfamily,backgroundcolor = \color{light-gray},breaklines=true,fontadjust=true,tabsize=2,float=htpb,numberstyle=\tiny}
+
+\DeclareMathOperator*{\argmin}{\arg\!\min}
+
+
+
+% Início do texto
+\begin{document}
+
+
+\listoftodos
+
+\include{capa}   % Capa, prefácio e afins
+
+\include{introducao}	% Capítulo 1: Introdução
+\include{revisao}
+\include{metodologia}
+\include{resultado}
+
+
+
+
+% Formato da bibliografia
+\bibliographystyle{apalike}
+
+% Arquivo .bib
+\bibliography{bibliografia}
+
+% Apêndice(s)
+\include{apendice}
+
+% Fim do texto
+\end{document}

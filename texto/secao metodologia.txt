@@ -1,0 +1,5 @@
+O que cientistas de dados fazem: Um resumo das etapas em Data Science para colocar no trabalho.
+
+https://class.coursera.org/datascitoolbox-003/lecture/33
+
+2.o vídeo do Week 1.

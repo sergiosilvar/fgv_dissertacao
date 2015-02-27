@@ -1,0 +1,17 @@
+% Faz com que o ínicio do capítulo sempre seja uma página ímpar
+\cleardoublepage
+
+% Inclui o cabeçalho definido no meta.tex
+\pagestyle{fancy}
+
+% Números das páginas em arábicos
+\pagenumbering{arabic}
+
+\chapter{Introdução}\label{intro}
+
+Desde o anúncio da realização de dois dos principais eventos esportivos da era moderna na cidade do Rio de Janeiro, a Copa do Mundo em 2014 e as Olimpíadas de Verão em 2016, os preços dos imóveis residenciais e comerciais tiveram uma alta histórica. Por exemplo, o bairro do Leblon figura como o metro quadrado de mais alto valor do Brasil \nota{colocar referencia}, enquanto que outros bairros suburbanos também apresentam valores acima da média nacional. Em decorrência do aquecimento do mercado, vários empreendimentos imobiliários surgiram ao longo da cidade, tendo como a Barra da Tijuca e Jacarepaguá os bairros de maior concentração destes, em função da falta de espaço em locais mais tradicionais como aqueles na Zona Sul e Tijuca.
+
+Entretanto, muitos destes empreendimentos apresentam preços considerados elevados, o que nos leva a perguntar como estimar o valor de um novo imóvel novo ou usado em um determinado local. No passado, pesquisas relacionadas a esse tema utilizavam uma ferramenta estatística conhecida como Modelo Hedônico  para a estimação de preço de um bem com base em suas partes constituintes. Em se tratando de imóveis, considerava-se suas partes constituintes como número de dormitórios, banheiros, suítes, existência de varanda, área construída, posição do apartamento em relação à rua, andar, vagas de garagem, entre outros. As observações eram então submetidas a um estimador, que na Matemática Aplicada é conhecido como Regressão Linear, e o resultado é um conjunto de coeficientes a serem aplicados em novas observações para a estimação do preço. Uma das limitações deste método é ausência da localização espacial das observações e, consequentemente, a carência de apreciação da autocorrelação espacial dos preços.
+
+Nessa dissertação, lançamos mãos de técnicas de mineração de dados para uma análise exploratória dos preços dos imóveis na cidade do Rio de Janeiro, onde avaliaremos a assertividade da regressão linear com e sem localização espacial, e finalmente consideraremos os efeitos da autocorrelação espacial.  \nota{colocar ref} . 
+
