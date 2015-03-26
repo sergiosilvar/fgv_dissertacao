@@ -27,7 +27,7 @@ def conecta_db():
     Retorna conexãoo ao dataset.
     '''
     #return sqlite.connect(DATABASE_NAME)
-    return psycopg2.connect("dbname=zap user=postgres")
+    return psycopg2.connect("dbname=zap user=sergio")
 
 
 
@@ -97,7 +97,9 @@ def insere_imoveis(imoveis):
 
 def __executar(cmd,params=None,con=None):
     try:
-        if con == None: con = conecta_db()
+        if con == None: 
+            con = d.conecta_db()
+        
         cur = con.cursor()
         cur.execute(cmd,params)
         con.commit()
@@ -319,7 +321,7 @@ def imoveis_dataframe():
     
 
 def salva_dataframe(df,tabela,*args,**kwargs):
-    engine = create_engine(r'postgresql://postgres:1234@localhost/zap')
+    engine = create_engine(r'postgresql://sergio:@localhost/zap')
     meta = sqlalchemy.MetaData(engine, schema='public')
     meta.reflect(engine, schema='public')
     pdsql = pd.io.sql.SQLDatabase(engine, meta=meta)

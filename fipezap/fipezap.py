@@ -8,6 +8,7 @@ Created on Fri Mar 07 23:25:50 2014
 # <codecell>
 import urllib2
 import logging as log
+
 import bs4
 import os
 from numpy import in1d
@@ -195,4 +196,4 @@ def download_fipezap(estados=None,cidades=None,bairros=None,num_quartos=None):
 
 
 if __name__ == '__main__':
-    pass
+    download_fipezap('rio de janeiro', 'rio de janeiro')

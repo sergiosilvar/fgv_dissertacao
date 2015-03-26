@@ -25,4 +25,3 @@ del *.nlo
 del *.tdo
 del *.rc
 del *.pyc
-del *.py.in
