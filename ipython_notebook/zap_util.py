@@ -1,4 +1,4 @@
-# -*- coding: latin-1 -*-
+# -*- coding: iso-8859-1 -*-
 
 import sys,os; 
 import pandas as pd
@@ -9,22 +9,22 @@ import geopandas as gd
 from scipy.stats import norm as gauss, probplot, cumfreq
 from matplotlib import rcParams
 from  matplotlib.pyplot import figure, xlim, ylim,pcolor, colorbar, xticks, \
-    yticks, subplots
+    yticks, subplots, subplot
 from numpy import linspace, arange,std, polyfit, polyval,sqrt
 
-
+from matplotlib.gridspec import GridSpec
 
 
 
 x = os.getcwd()
-l = x.rfind('\\')
+l = x.rfind('/')
 path = x[:l+1]+'capturar_zap'
 sys.path.append(path)
 
 import dataset as d
 
 # Connect to an existing database
-con = psycopg2.connect("dbname=zap user=postgres")
+con = psycopg2.connect("dbname=zap user=sergio")
 
 def set_style(sty='ggplot'):
     style.use(sty)
@@ -60,38 +60,24 @@ def tam_figura(largura=None, altura=None):
         
             
  
-def remove_acento(str_or_list):
-    troca = []
-    troca.append( {'de':['á','à','ã','ä','â'], 'para':'a'})
-    troca.append( {'de':['Á','À','Ã','Ä','Â'], 'para':'A'})
-    troca.append( {'de':['é','è','ë','ê'], 'para':'e'})
-    troca.append( {'de':['É','È','Ë','Ê'], 'para':'E'})
-    troca.append( {'de':['í','ì','ï','î'], 'para':'i'})
-    troca.append( {'de':['Í','Ì','Ï','Î'], 'para':'I'})
-    troca.append( {'de':['ó','ò','ö','õ','ô'], 'para':'o'})
-    troca.append( {'de':['Ó','Ò','Ö','Õ','Ô'], 'para':'O'})
-    troca.append( {'de':['ú','ù','ü','û'], 'para':'u'})
-    troca.append( {'de':['Ú','Ù','Ü','Û'], 'para':'U'})
-    troca.append( {'de':['ç'], 'para':'c'})
-    troca.append( {'de':['Ç'], 'para':'C'})
-    troca.append( {'de':['(', ')','[',']'], 'para':'_'})
-
+def remove_acento(str_or_list, codec='utf-8'):
     if type(str_or_list) == str:
-        str_sem = str_or_list
-        for item in troca:
-            for c in item['de']:
-                str_sem = str_sem.replace(c,item['para'])    
-        return str_sem
-
+        s = str_or_list.decode(codec)
+        return unicodedata.normalize('NFKD', s).encode('ascii', 'ignore')
+        
     if type(str_or_list) == list:
         return [remove_acento(item) for item in str_or_list]
         
     if type(str_or_list) == unicode:
         return unicodedata.normalize('NFKD', str_or_list).encode('ascii', 'ignore')
-
+    
     
     msg =  'ERRO: ''unicode'', ''str'' ou ''list'' esperado. ' + str(type(str_or_list)) + ' encontrado.'
     raise Exception(msg)
+    
+    
+    
+    
     
 def plot_residual(smres):
     
@@ -201,7 +187,7 @@ def print_autocorr(dataframe,cols_excluded=[]):
     cols_autoc = cols_autocorr(matrix_corr)
 
     if len(cols_autoc) == 0:
-        print 'NÃ£o hÃ¡ colunas autocorrelacionadas.'
+        print 'Não há colunas autocorrelacionadas.'
     else:
         print 'Coluna'.ljust(20),'|', 'Autocorrelacionada com '.ljust(50)
         for k,c in cols_autoc.iteritems():
@@ -240,13 +226,19 @@ def scatter_distancia(dfx,suptitle=None):
 
         
 def plot_boxhist(x,titulo=None,xlabel=None):
-    f,a = subplots(2,1)
-    a0,a1 = a.ravel()
+    #f,a = subplots(2,1)
+    #a0,a1 = a.ravel()
+    
+    fig = figure()
+    gs = GridSpec(3,1)
+    a0 = subplot(gs[0,:])
+    a1 = subplot(gs[1:,:], sharex=a0)
+    
     bp = a0.boxplot(x,vert=False);
     a0.text(max(x)*0.8,1.2, 
         s='$3\sigma$={:.2f}'.format(3*std(x)), 
         bbox={'facecolor':'w', 'pad':10, 'alpha':0.5},
-        style='italic',fontsize=15)
+        style='italic',fontsize=13)
     
     a1.hist(x,bins=30);
     
@@ -254,6 +246,7 @@ def plot_boxhist(x,titulo=None,xlabel=None):
         a0.set_title(titulo);
     if xlabel != None:
         a1.set_xlabel(xlabel);
+    gs.tight_layout(fig)
         
         
 def rmse(resid):
