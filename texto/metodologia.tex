@@ -5,6 +5,8 @@
 \chapter{Metodologia}\label{chap:metodologia}
 
 
+
+
 \section{Descrição dos dados}\label{sec:descricao_dados}
 
 \begin{table}[htp]
@@ -24,7 +26,9 @@
 
 \section{Obtenção dos dados}
 
-\subsection{Informações sobre os imóveis}\label{sec:captura_zap}
+ 
+
+\subsection{Variáveis intrínsecas}\label{sec:captura_zap}
 
 O ZAP Imóveis\footnote{ZAP Imóveis: \url{http://www.zapimoveis.com.br/}.} é um serviço de classificados de imóveis na Internet onde proprietários de imóveis, sejam pessoas físicas ou jurídicas, anunciam-os detalhando informações que consideram relevantes a quem procura comprá-los. Essas informações foram coletadas para esse estudo pela técnica conhecida como \textit{Web Scrapping}.
 
@@ -53,9 +57,9 @@ Alguns anúncios continham informações adicionais como:
 \item Características do condomínio: piscina, sauna, portaria 24 horas, etc.
 \end{enumerate}
 
-\subsection{Distâncias dos imóveis a pontos de interesse}
+\subsection{Variáveis espaciais}
 
-A fim de tentar minimizar os efeitos da autocorrelação espacial da variável preço buscamos criar variáveis de distâncias dos imóveis aos seguintes pontos de interesse:
+A fim de tentar minimizar os efeitos da autocorrelação espacial da variável \var{preço} buscamos criar variáveis de distâncias dos imóveis aos seguintes pontos de interesse:
 
 \begin{enumerate}
 \item Praias;
@@ -169,23 +173,6 @@ A obtenção dos dados foi facilitada como uso do \textit{plugin} QuickOSM para 
 
 Definimos arbitrariamente o centro da cidade como a localização geográfica da estação de metrô Carioca, na Avenida Rio Branco, cujas coordenadas são \todo{colocar as coordenadas do centro aqui} em função da proximidade a essa avenida que agrega um grande número de escritórios, centros médicos e repartições publicas ao longo de seu entorno, \cref{fig:loc_metro_carioca}. Construímos 3 distâncias a partir deste ponto para cada imóvel: uma distância euclidiana até a localização definida, a distância até a localização definida somente na dimensão da latitude e a última somente na dimensão da longitude. Com essas duas últimas esperamos poder verificar a contribuição da distância em relação aos eixos Norte-Sul e Leste-Oeste para os preços dos imóveis.
 
-\subsection{Dados sócio econômicos}
-
-O menor nível de agregação dos dados sócio econômicos que encontramos para a cidade do Rio de Janeiro foram por bairros, restringindo sua utilização apenas para regressões considerando mais de um bairro. Os dados selecionados para comporem a análise foram:
-
-\begin{description}
-\item[Índice de Desenvolvimento Humano];
-\item[Média de anos de estudo];
-\item[Percentual de alfabetização];
-\item[Rendimento nominal médio];
-\item[Saneamento];
-\item[Taxa de crimes violentos];
-\item[Taxa de roubos ao patrimônio].
-\end{description}
-
-
-
-
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\linewidth]{img/loc_metro_carioca}
@@ -194,13 +181,292 @@ O menor nível de agregação dos dados sócio econômicos que encontramos para 
 \end{figure}
 
 
+\subsection{Variáveis sócio econômicos}
+
+O menor nível de agregação dos dados sócio econômicos que encontramos para a cidade do Rio de Janeiro foram por bairros, restringindo sua utilização apenas para regressões considerando mais de um bairro. Os dados selecionados para comporem a análise foram obtidos do serviço Armazém de Dados\footnote{Armazém de Dados: \url{http://www.armazemdedados.rio.rj.gov.br/}}, do Instituto Pereira Passos, que são uma síntese sobre os bairros da cidade do Rio de Janeiro a partir dos dados coletados nos Censos de 2000 e 2010 pelo IBGE. Abaixo listamos as informações selecionadas, ano em que a informação foi gerada e número da tabela no Armazém de Dados para referência:
+
+\begin{description}
+\item[Índice de Desenvolvimento Humano] Índice de Desenvolvimento Humano Municipal, ano 2000, tabela nº 1172;
+
+\item[Média de anos de estudo] Média de anos de estudo das pessoas responsáveis pelos domicílios particulares permanentes, ano 2000, tabela nº 488;
+
+\item[Percentual de alfabetização] Percentual de alfabetização de pessoas de 10 anos ou mais de idade, ano 2010, tabela nº 3132 ;
+
+\item[Rendimento nominal médio] Rendimento nominal médio de pessoas de 10 anos ou mais de idade, ano 2010, tabela nº 3151;
+
+\item[Saneamento] Percentual de domicílios com banheiros exclusivos ligados à rede geral de esgoto, ano 2010, tabela nº 3169;
+\end{description}
+
+Já os dados sobre criminalidade foram recuperados dos Resumos Mensais de AISP (RMA), relatórios estatísticos sobre os registros das Delegacias de Polícia Civil, publicados pelo Instituto de Segurança Pública\footnote{Instituto de Segurança Pública: \url{URL}} do Estado do Rio de Janeiro. Os bairros da cidade são agrupados em 17 Áreas Integradas de Segurança Pública (AISP), e um total de 39 categorias classificam os Registros de Ocorrência e Registros de Aditamento lavrados nas delegacias. 
+
+Para esse estudo, coletamos os RMAs divulgados entre outubro de 2013 a outubro de 2014, de forma a cobrir todos os meses de anúncios publicados em nosso conjunto de imóveis. Escolhemos utilizar as taxas por 100 mil habitantes a fim de uniformizar a comparação entre bairros conforme respectiva população. Dentre as 39 categorias disponíveis, resolvemos construir apenas duas variáveis:
+
+\begin{description}
+\item [Crimes violentos] somatório das taxas de homicídio doloso, lesão corporal seguida de morte, latrocínio, tentativa de homicídio, lesão corporal dolosa e estupro;
+\item [Crimes de roubo] somatório das taxas de roubo a estabelecimento comercial,  a residência, a veículo, de carga, de transeunte, em coletivo, de banco, de caixa eletrônico, de aparelho ceular, com condução da vítima para saque e furto de veículos
+\end{description}
+
+Por fim, como cada AISP agrega os registros de seus bairros constituintes, replicamos os valores entre seus bairros.
+
+
+
+
+
+
 \section{Tratamento dos dados}
 
-O tratamento dos dados é o passo necessário para a garantir da qualidade dos dados de forma a que o modelo a ser proposto possa ser construído dentro das condições ideias, evitando perturbações não conhecidas por erros, inconsistência ou presença de valores muito além do limite esperado.\todo{Referência para outliers?}
+O tratamento dos dados é o passo necessário para a garantir da qualidade dos mesmos de forma que o modelo a ser proposto possa ser construído dentro das condições ideais, evitando perturbações não conhecidas por erros, inconsistência ou presença de valores muito além do limite esperado.\todo{Referência para outliers?}
 
-A seguir plotamos a distribuição de preços encontrados no conjunto de dados capturado.
-
-
+\subsection{Variáveis intrínsecas}
 
 
-Como os dados da pesquisa foram obtidos utilizando a técnica de Web Scrapping \ref{sec:webscrap} a partir de uma origem estruturada, assume-se que 
+Obtivemos um total de 91.091 anúncios de vendas de imóveis do tipo apartamento padrão para a cidade no ZAP Imóveis cujos anúncios foram publicados entre outubro de 2013 a outubro de 2014. Desses, 59.760 possuem coordenadas geográficas que permitem determinar se pertencem de fato à cidade do Rio de Janeiro, que resultou em 59.412. Em seguida analisamos cada uma das variáveis intrínsecas obtidas diretamente dos dados básicos dos anúncios em busca de valores ausentes. A \cref{fig:var_intrins_ausente} apresenta o percentual de observações ausentes a cada uma dessas variáveis.
+
+
+\begin{figure}[th!]
+\centering
+\includegraphics[width=0.8\linewidth]{img/var_intrins_ausente}
+\caption[Percentual de valores ausentes]{}
+\caption{}
+\label{fig:var_intrins_ausente}
+\end{figure}
+
+Como tratamento, excluímos as 43 observações cuja variável \textit{quartos} estava ausente, resultando em 59.369 observações. Já as outras variávies    \textit{suítes}, \textit{garagem} e \textit{condomínio}, assumimos que o percentual representa adequadamente a ausência da característica em questão no imóvel e por isso não está cadastrado no anúncio. Sendo assim, definimos os valores ausentes como 0.
+
+Em seguida passamos a avaliar a presença de outliers na distribuição das variáveis. Para tal, construímos uma visualização específica com um boxplot horizontal e um histograma, de forma que é possível avaliar a distribuição da variável em ambos os gráficos ao longo de seus valores. O gráfico boxplot conta ainda com um cálculo do valor de 3 desvios padrão como referência. Apresentamos a visualização de cada variável antes da remoção dos \textit{outliers}, explicamos a escolha do valor limite e por fim mostramos a mesma visualização sem os \textit{outliers}.
+
+\subsubsection{Tratamento de outliers da variável \var{quartos}}
+
+Visualização da distribuição da variável \var{quartos} antes da remoção dos \textit{outliers}. 
+
+% Imagens geradas a partir de "Tratar variaveis intrinsecas.ipynb".
+
+\begin{figure}[H]
+\centering
+		\includegraphics[width=0.8\linewidth]{img/var_quartos_boxhist_antes}
+\caption{Distribuição da variável \var{quartos} com \textit{outliers}.}
+\label{fig:var_quartos_boxhist_antes}
+\end{figure}
+
+
+Tomando como base o valor de 3 desvios padrão, decidimos limitar as observações de imóveis a até 4 quartos. 
+
+Número observações antes da remoção de \textit{outliers}: 59.369. 
+
+Número de \textit{outliers}: 918.
+
+Número de observações após a remoção de \textit{outliers}: 58.451.
+
+Distribuição da variável \var{quartos} após remoção dos \textit{outliers}:
+
+	
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{img/var_quartos_boxhist_depois}
+\caption{Distribuição da variável \var{quartos} após remoção dos \textit{outliers}.}
+\label{fig:var_quartos_boxhist_depois}
+\end{figure}
+
+
+
+\subsubsection{Tratamento de outliers da variável \var{area}}
+
+Distribuição da variável \var{area} com \textit{outliers}:
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{img/var_area_boxhist_antes}
+\caption{Distribuição da variável \var{area} com \textit{outliers}.}
+\label{fig:var_area_boxhist_antes}
+\end{figure}
+
+Tomando como base o valor de 3 desvios padrão, decidimos limitar as observações de imóveis com área até 300 $ m^2 $ . 
+
+Número observações antes da remoção de \textit{outliers}: 58.451. 
+
+Número de \textit{outliers}: 2.355.
+
+Número de observações após a remoção de \textit{outliers}: 56.096.
+
+Distribuição da variável \var{area} apos remoção dos \textit{outliers}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{img/var_area_boxhist_depois}
+\caption{Distribuição da variável \var{area} com \textit{outliers}.}
+\label{fig:var_area_boxhist_depois}
+\end{figure}
+
+
+\subsubsection{Tratamento de outliers da variável \var{garagem}}
+
+
+
+
+
+Distribuição da variável \var{garagem} com \textit{outliers}:
+ 
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.8\linewidth]{img/var_garagem_boxhist_antes}
+ 	\caption{Distribuição da variável \var{garagem} com \textit{outliers}.}
+ 	\label{fig:var_garagem_boxhist_antes}
+ \end{figure}
+ 
+ Tomando como base o valor de 3 desvios padrão, decidimos limitar as observações de imóveis com área até 300 $ m^2 $ . 
+ 
+ Número observações antes da remoção de \textit{outliers}: 56.906. 
+ 
+ Número de \textit{outliers}: 84.
+ 
+ Número de observações após a remoção de \textit{outliers}: 56.012.
+ 
+ Distribuição da variável \var{garagem} apos remoção dos \textit{outliers}.
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.8\linewidth]{img/var_garagem_boxhist_depois}
+ 	\caption{Distribuição da variável \var{garagem} com \textit{outliers}.}
+ 	\label{fig:var_garagem_boxhist_depois}
+ \end{figure}
+ 
+ 
+ 
+ \subsubsection{Tratamento de outliers da variável \var{suites}}
+ 
+ 
+ 
+ Distribuição da variável \var{suites}. Para essa variável não detectamos \textit{outliers} para serem removidos. 
+ 
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.8\linewidth]{img/var_suites_boxhist_antes}
+ 	\caption{Distribuição da variável \var{suítes} com \textit{outliers}.}
+ 	\label{fig:var_suites_boxhist_antes}
+ \end{figure}
+ 
+ Tomando como base o valor de 3 desvios padrão, decidimos limitar as observações de imóveis com área até 300 $ m^2 $ . 
+ 
+ Número observações : 56.906. 
+ 
+ 
+ 
+ \subsubsection{Tratamento de outliers da variável \var{condominio}}
+ 
+ 
+ 
+ Distribuição da variável \var{condominio} com \textit{outliers}:
+ 
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.8\linewidth]{img/var_condominio_boxhist_antes}
+ 	\caption{Distribuição da variável \var{condominio} com \textit{outliers}.}
+ 	\label{fig:var_condominio_boxhist_antes}
+ \end{figure}
+ 
+ O valor de 3 desvios padrão apresenta uma grandeza superior até do esperado. Limitamos as observações ao máximo de R\$ 2.000,00.
+ 
+ Número observações antes da remoção de \textit{outliers}: 56.012. 
+ 
+ Número de \textit{outliers}: 1.964.
+ 
+ Número de observações após a remoção de \textit{outliers}: 54.048.
+ 
+ Distribuição da variável \var{condominio} apos remoção dos \textit{outliers}.
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.8\linewidth]{img/var_condominio_boxhist_depois}
+ 	\caption{Distribuição da variável \var{condominio} com \textit{outliers}.}
+ 	\label{fig:var_condominio_boxhist_depois}
+ \end{figure}
+ 
+ 
+ 
+ \subsubsection{Tratamento de outliers da variável \var{m2}}
+ 
+ 
+ 
+ Distribuição da variável \var{m2} com \textit{outliers}:
+ 
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.8\linewidth]{img/var_m2_boxhist_antes}
+ 	\caption{Distribuição da variável \var{m2} com \textit{outliers}.}
+ 	\label{fig:var_m2_boxhist_antes}
+ \end{figure}
+ 
+ Com base na reportagem\footnote{Link para reportagem: \url{http://g1.globo.com/economia/noticia/2014/09/rio-continua-com-o-metro-quadrado-mais-caro-do-pais-aponta-fipezap.html}} do jornal O Globo de 4 de setembro de 2013 mostra que o valor médio do metro quadrado mais caro da cidade é de R\$ 23.613, limitamos os valores de $ m^2 $ ao máximod de R\$ 30.000,00.
+ 
+ Número observações antes da remoção de \textit{outliers}: 54.048. 
+ 
+ Número de \textit{outliers}: 467.
+ 
+ Número de observações após a remoção de \textit{outliers}: 53.581.
+ 
+ Distribuição da variável \var{m2} apos remoção dos \textit{outliers}.
+ 
+ \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.8\linewidth]{img/var_m2_boxhist_depois}
+ 	\caption{Distribuição da variável \var{m2} com \textit{outliers}.}
+ 	\label{fig:var_m2_boxhist_depois}
+ \end{figure}
+ 
+ 
+  \subsubsection{Tratamento de outliers da variável dependente \var{preço}}
+  
+  
+  Finalmente, observamos a distribuição da variável \var{preço} após o tratamento das outras variáveis independentes.
+  
+  
+  \begin{figure}[H]
+  	\centering
+  	\includegraphics[width=0.8\linewidth]{img/var_preco_boxhist_antes}
+  	\caption{Distribuição da variável \var{preço} com \textit{outliers}.}
+  	\label{fig:var_preco_boxhist_antes}
+  \end{figure}
+  
+  Notamos que a distribuição atinge como valor máximo cerca de 9 milhões de reais. Escolhemos limitar os valores até 4 milhões de reais.
+  
+  
+  Número observações antes da remoção de \textit{outliers}: 53.581. 
+  
+  Número de \textit{outliers}: 566.
+  
+  Número de observações após a remoção de \textit{outliers}: 53.015.
+  
+  Distribuição da variável \var{preço} apos remoção dos \textit{outliers}.
+  
+  \begin{figure}[H]
+  	\centering
+  	\includegraphics[width=0.8\linewidth]{img/var_preco_boxhist_depois}
+  	\caption{Distribuição da variável \var{preço} sem \textit{outliers}.}
+  	\label{fig:var_preco_boxhist_depois}
+  \end{figure}
+  
+  
+\subsection{Variáveis espaciais}
+
+As variáveis espaciais foram calculadas como a menor distância dos imóveis a delegacias de polícia, corpo de bombeiros, unidades de saúde pública e particular, estações de trem, estações de metrô, principais logradouros, favelas	, praias e lagoas. Desta forma, por serem variáveis calculadas e não obtidas por métodos de pesquisa, captura de dados ou consulta a fontes de informação, seus valores são confiáveis e descartam necessidade de tratamento.
+
+\subsection{Variáveis sócio econômicas}
+
+A maioria das variáveis sócio econômicas foram obtidas a partir do Armazém de Dados da Prefeitura do Rio de Janeiro. Neste serviço as informações são organizadas hierarquicamente em nível de Áreas de Planejamento, Regiões Administrativas e  bairros. Regiões Administrativas, também conhecidas como subprefeituras, são formadas por um conjunto de bairros vizinhos para gestão dos serviços públicos específico a esses bairros. As Áreas de Planejamento são agregações de Regiões Administrativas, prevalecidas pela distribuição geográfica na cidade. A \cref{fig:rj_divisao_administrativa} na página 	\pageref{fig:rj_divisao_administrativa} apresenta a divisão administrativa da ao nível de bairro, Regiões Administrativas e Áreas de Planejamento cidade do Rio de Janeiro. Como o nível mais baixo dos dados no Armazém de Dados é o de bairro, as variáveis \var{Média de Anos de Estudo}, \var{Percentual Alfabetização}, \var{Rendimento Nominal Médio}j,\var{Saneamento} e \var{IDH} foram replicadas para os imóveis do respectivo bairro, portanto, todos os imóveis do bairro $ i $ possuem o mesmo valor para a mesma variável. Os valores ausentes de bairros para uma variável foram substituídos pela média aritmética dos bairros vizinhos conforme descrito abaixo:
+
+\begin{description}
+	\item[Gericinó] As variáveis \var{Média de Anos de Estudo} e \var{IDH}  foram substituídas pela média aritmética dos bairros Bangu, Padre Miguel e Realengo, respectivamente.
+
+	\item[Lapa] 	As variáveis \var{Média de Anos de Estudo}, \var{Percentual de Alfabetização}, \var{Rendimento Nominal} e \var{IDH}  foram substituídas pela média aritmética dos bairros Centro, Santa Teresa e Glória, respectivamente.
+	
+	\item[Vasco da Game] 	As variável \var{Média de Anos de Estudo} foi  substituída pela média aritmética dos bairros São Cristóvão, Caju e Benfica.
+		
+
+\end{description}
+
+As variáveis relacionadas a criminalidade \var{} foram recuperadas dos relatórios do inst
