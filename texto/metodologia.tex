@@ -61,16 +61,17 @@ Alguns anúncios continham informações adicionais como:
 
 A fim de tentar minimizar os efeitos da autocorrelação espacial da variável \var{preço} buscamos criar variáveis de distâncias dos imóveis aos seguintes pontos de interesse:
 
-\begin{enumerate}
-\item Praias;
-\item Lagoas;
-\item Estabelecimentos de Saúde;
-\item Estações de Metrô;
-\item Delegacias da Polícia Civil;
-\item Unidades do Corpo de Bombeiros;
-\item Favelas;
-\item Principais logradouros;
+\begin{enumerate}\label{list:var_espaciais}
 \item Centro da cidade do Rio de Janeiro.
+\item Delegacias da Polícia Civil;
+\item Estações de metrô;
+\item Favelas;
+\item Lagoas;
+\item Praias;
+\item Principais logradouros;
+\item Unidades de saúde privada;
+\item Unidades de saúde pública;
+\item Unidades do Corpo de Bombeiros;
 \end{enumerate}
 
 A seguir detalharemos a coleta de cada uma dessas informações.
@@ -169,9 +170,9 @@ A geometria das praias que circundam a cidade do Rio de Janeiro foram capturadas
 
 A obtenção dos dados foi facilitada como uso do \textit{plugin} QuickOSM para o software Quantum GIS. Esse \textit{plugin} permite fazer o \textit{download} das informações disponíveis no Open Street Map que intersectem a área definida por retângulo de coordenadas personalizadas. Em nosso caso, utilizamos \textit{software} a geometria da cidade do Rio de Janeiro para determinar as coordenadas de um retângulo circunscrito à cidade. Essas coordenadas foram passadas ao plugin, em conjunto com um filtro para obter somente informações sobre praias. O plugin faz o  download das informações pertinentes em um arquivo temporário. Como  retângulo circunscrito à cidade traz informações de outras cidades vizinhas, filtramos as praias de interesse realizando nova análise espacial, desta vez no \textit{software} Quantum GIS, para selecionar somente geometrias das praias contidas dentro da área definida pela geometria da cidade do Rio de Janeiro. Por fim, essa seleção é salva no formato \textit{shapefile} e importadas para o banco de dados conforme descrito na listagem \ref{lst_importa_shp}. O cálculo da distância é similar ao exemplo apresentado na listagem \ref{lst_calc_dist_sql}.
 
-\subsubsection{Centro da cidade do Rio de Janeiro}
+\subsubsection{Centro da cidade do Rio de Janeiro} \label{sec:obter_centro_rio}
 
-Definimos arbitrariamente o centro da cidade como a localização geográfica da estação de metrô Carioca, na Avenida Rio Branco, cujas coordenadas são \todo{colocar as coordenadas do centro aqui} em função da proximidade a essa avenida que agrega um grande número de escritórios, centros médicos e repartições publicas ao longo de seu entorno, \cref{fig:loc_metro_carioca}. Construímos 3 distâncias a partir deste ponto para cada imóvel: uma distância euclidiana até a localização definida, a distância até a localização definida somente na dimensão da latitude e a última somente na dimensão da longitude. Com essas duas últimas esperamos poder verificar a contribuição da distância em relação aos eixos Norte-Sul e Leste-Oeste para os preços dos imóveis.
+Definimos arbitrariamente o centro da cidade como a localização geográfica da estação de metrô Carioca, na Avenida Rio Branco, coordenadas longitude -22.907670, latitude -43.177917, em função da proximidade a essa avenida que agrega um grande número de escritórios, centros médicos e repartições publicas ao longo de seu entorno, \cref{fig:loc_metro_carioca}. Construímos 3 distâncias a partir deste ponto para cada imóvel: uma distância euclidiana até a localização definida, a distância até a localização definida somente na dimensão da latitude e a última somente na dimensão da longitude. Com essas duas últimas esperamos poder verificar a contribuição da distância em relação aos eixos Norte-Sul e Leste-Oeste para os preços dos imóveis.
 
 \begin{figure}[h!]
 \centering
@@ -181,10 +182,10 @@ Definimos arbitrariamente o centro da cidade como a localização geográfica da
 \end{figure}
 
 
-\subsection{Variáveis sócio econômicos}
+\subsection{Variáveis socioeconômicas}
 
 O menor nível de agregação dos dados sócio econômicos que encontramos para a cidade do Rio de Janeiro foram por bairros, restringindo sua utilização apenas para regressões considerando mais de um bairro. Os dados selecionados para comporem a análise foram obtidos do serviço Armazém de Dados\footnote{Armazém de Dados: \url{http://www.armazemdedados.rio.rj.gov.br/}}, do Instituto Pereira Passos, que são uma síntese sobre os bairros da cidade do Rio de Janeiro a partir dos dados coletados nos Censos de 2000 e 2010 pelo IBGE. Abaixo listamos as informações selecionadas, ano em que a informação foi gerada e número da tabela no Armazém de Dados para referência:
-
+	
 \begin{description}
 \item[Índice de Desenvolvimento Humano] Índice de Desenvolvimento Humano Municipal, ano 2000, tabela nº 1172;
 
@@ -197,21 +198,21 @@ O menor nível de agregação dos dados sócio econômicos que encontramos para 
 \item[Saneamento] Percentual de domicílios com banheiros exclusivos ligados à rede geral de esgoto, ano 2010, tabela nº 3169;
 \end{description}
 
-Já os dados sobre criminalidade foram recuperados dos Resumos Mensais de AISP (RMA), relatórios estatísticos sobre os registros das Delegacias de Polícia Civil, publicados pelo Instituto de Segurança Pública\footnote{Instituto de Segurança Pública: \url{URL}} do Estado do Rio de Janeiro. Os bairros da cidade são agrupados em 17 Áreas Integradas de Segurança Pública (AISP), e um total de 39 categorias classificam os Registros de Ocorrência e Registros de Aditamento lavrados nas delegacias. 
+Já os dados sobre criminalidade foram recuperados dos relatórios eletrônicos Resumo das Princiais Incidências Criminais, divulgadas mensalmente pelo Instituto de Segurança Pública do Estado do Rio de Janeiro, ISP\footnote{Instituto de Segurança Pública: \url{http://www.isp.rj.gov.br/dadosoficiais.asp}}. Esses relatórios apresentam um total de 39 categorias de incidências criminais comunicadas na forma de Registros de Ocorrência ou Registros de Aditamento lavrados nas delegacias de Polícia Civil em todo o estado do Rio de Janeiro.  
 
-Para esse estudo, coletamos os RMAs divulgados entre outubro de 2013 a outubro de 2014, de forma a cobrir todos os meses de anúncios publicados em nosso conjunto de imóveis. Escolhemos utilizar as taxas por 100 mil habitantes a fim de uniformizar a comparação entre bairros conforme respectiva população. Dentre as 39 categorias disponíveis, resolvemos construir apenas duas variáveis:
+Para esse estudo, coletamos os dados de criminalidade divulgados entre outubro de 2013 a outubro de 2014, de forma a cobrir todos os meses de anúncios publicados em nosso conjunto de imóveis. Escolhemos utilizar as taxas por 100 mil habitantes a fim de permitir a comparação entre bairros conforme respectiva população. Dentre as 39 categorias disponíveis, resolvemos construir duas variáveis:
 
 \begin{description}
-\item [Crimes violentos] somatório das taxas de homicídio doloso, lesão corporal seguida de morte, latrocínio, tentativa de homicídio, lesão corporal dolosa e estupro;
-\item [Crimes de roubo] somatório das taxas de roubo a estabelecimento comercial,  a residência, a veículo, de carga, de transeunte, em coletivo, de banco, de caixa eletrônico, de aparelho ceular, com condução da vítima para saque e furto de veículos
+	\item [Crimes violentos] somatório das taxas de homicídio doloso, lesão corporal seguida de morte, latrocínio, tentativa de homicídio, lesão corporal dolosa e estupro;
+	\item [Crimes de roubo] somatório das taxas de roubo a estabelecimento comercial,  a residência, a veículo, de carga, de transeunte, em coletivo, de banco, de caixa eletrônico, de aparelho ceular, com condução da vítima para saque e furto de veículos
 \end{description}
 
-Por fim, como cada AISP agrega os registros de seus bairros constituintes, replicamos os valores entre seus bairros.
+Tais relatórios não apresentam os dados a nível de bairros, mas em Áreas Integradas de Segurança Pública, AISP, que são agrupamento de bairros e cidades. Para o caso da cidade do Rio de Janeiro, os bairros dessa são agrupados em 17 AISPs, conforme tabela \ref{tbl:bairros_aisp}. 
 
 
+\input{img/tbl_bairros_aisp_edited}
 
-
-
+Desta forma, os imóveis de um bairro possuem o mesmo valor para cada uma das duas variáveis de criminalidade. Os bairros Centro, Colégio  e Tijuca são atendidos em mais de um AISP. Nesses casos definimos o valor das variáveis de criminalidade como a média dos AISPs correspondentes.
 
 \section{Tratamento dos dados}
 
@@ -453,11 +454,105 @@ Distribuição da variável \var{garagem} com \textit{outliers}:
   
 \subsection{Variáveis espaciais}
 
-As variáveis espaciais foram calculadas como a menor distância dos imóveis a delegacias de polícia, corpo de bombeiros, unidades de saúde pública e particular, estações de trem, estações de metrô, principais logradouros, favelas	, praias e lagoas. Desta forma, por serem variáveis calculadas e não obtidas por métodos de pesquisa, captura de dados ou consulta a fontes de informação, seus valores são confiáveis e descartam necessidade de tratamento.
+As variáveis espaciais apresentadas na seção \ref{list:var_espaciais}, página \pageref{list:var_espaciais}, foram calculadas como a  menor distância aos imóveis. Como não foram obtidas por métodos propensos a erros e sim por um cálculo determinístico, não esperamos obter valores que sejam considerados outliers. Entretanto, a fim de garantir a qualidade dos dados, apresentamos as visualizações que combinam boxplot com histograma para cada uma delas.
+
+\subsubsection{Distância ao centro da cidade do Rio de Janeiro}
+
+A distribuição da distância euclidiana ao centro da cidade do Rio de Janeiro, definido na página \pageref{sec:obter_centro_rio}, pode ser observada na figura a seguir:
+
+\begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.8\linewidth]{img/var_dist_centro_boxhist}
+ 	\caption{Boxplot e histograma da variável \var{dist\_centro}}
+ 	\label{fig:var_dist_centro_boxhist}
+\end{figure} 
+
+\subsubsection{Distância à Delegacia de Polícia Civil}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_dist_delegacia_boxhist}
+	\caption{Boxplot e histograma da variável \var{dist\_delegacia}}
+	\label{fig:var_dist_delegacia_boxhist}
+\end{figure} 
+
+\subsubsection{Distância à estação de metrô}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_dist_metro_boxhist}
+	\caption{Boxplot e histograma da variável \var{dist\_metro}}
+	\label{fig:var_dist_metro_boxhist}
+\end{figure} 
+
+\subsubsection{Distância à favela}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_dist_favela_boxhist}
+	\caption{Boxplot e histograma da variável \var{dist\_favela}}
+	\label{fig:var_dist_favela_boxhist}
+\end{figure} 
+
+\subsubsection{Distância à lagoa}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_dist_lagoa_boxhist}
+	\caption{Boxplot e histograma da variável \var{dist\_lagoa}}
+	\label{fig:var_dist_lagoa_boxhist}
+\end{figure} 
+
+\subsubsection{Distância à praia}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_dist_praia_boxhist}
+	\caption{Boxplot e histograma da variável \var{dist\_praia}}
+	\label{fig:var_dist_praia_boxhist}
+\end{figure} 
+
+\subsubsection{Distância à principal logradouro}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_dist_logradouro_boxhist}
+	\caption{Boxplot e histograma da variável \var{dist\_logradouro}}
+	\label{fig:var_dist_logradouro_boxhist}
+\end{figure} 
+
+\subsubsection{Distância à unidade de saúde privada}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_dist_saude_privada_boxhist}
+	\caption{Boxplot e histograma da variável \var{dist\_saude\_privada}}
+	\label{fig:var_dist_saude_privada_boxhist}
+\end{figure} 
+
+\subsubsection{Distância à unidade de saúde pública}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_dist_saude_publica_boxhist}
+	\caption{Boxplot e histograma da variável \var{dist\_saude\_publica}}
+	\label{fig:var_dist_saude_publica_boxhist}
+\end{figure} 
+
+\subsubsection{Distância à unidade do Corpo de Bombeiros}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_dist_bombeiro_boxhist}
+	\caption{Boxplot e histograma da variável \var{dist\_bombeiro}}
+	\label{fig:var_dist_bombeiro_boxhist}
+\end{figure} 
 
 \subsection{Variáveis sócio econômicas}
 
-A maioria das variáveis sócio econômicas foram obtidas a partir do Armazém de Dados da Prefeitura do Rio de Janeiro. Neste serviço as informações são organizadas hierarquicamente em nível de Áreas de Planejamento, Regiões Administrativas e  bairros. Regiões Administrativas, também conhecidas como subprefeituras, são formadas por um conjunto de bairros vizinhos para gestão dos serviços públicos específico a esses bairros. As Áreas de Planejamento são agregações de Regiões Administrativas, prevalecidas pela distribuição geográfica na cidade. A \cref{fig:rj_divisao_administrativa} na página 	\pageref{fig:rj_divisao_administrativa} apresenta a divisão administrativa da ao nível de bairro, Regiões Administrativas e Áreas de Planejamento cidade do Rio de Janeiro. Como o nível mais baixo dos dados no Armazém de Dados é o de bairro, as variáveis \var{Média de Anos de Estudo}, \var{Percentual Alfabetização}, \var{Rendimento Nominal Médio}j,\var{Saneamento} e \var{IDH} foram replicadas para os imóveis do respectivo bairro, portanto, todos os imóveis do bairro $ i $ possuem o mesmo valor para a mesma variável. Os valores ausentes de bairros para uma variável foram substituídos pela média aritmética dos bairros vizinhos conforme descrito abaixo:
+A maioria das variáveis sócio econômicas foram obtidas a partir do Armazém de Dados da Prefeitura do Rio de Janeiro. Neste serviço as informações são organizadas hierarquicamente em nível de Áreas de Planejamento, Regiões Administrativas e  bairros. Regiões Administrativas, também conhecidas como subprefeituras, são formadas por um conjunto de bairros vizinhos para gestão dos serviços públicos específico a esses bairros. As Áreas de Planejamento são agregações de Regiões Administrativas, prevalecidas pela distribuição geográfica na cidade. A \cref{fig:rj_divisao_administrativa} na página 	\pageref{fig:rj_divisao_administrativa} apresenta a divisão administrativa da ao nível de bairro, Regiões Administrativas e Áreas de Planejamento cidade do Rio de Janeiro. 
+
+Como o nível mais detalhado dos dados no Armazém de Dados é o de bairro, as variáveis \var{Média de Anos de Estudo}, \var{Percentual Alfabetização}, \var{Rendimento Nominal Médio}j,\var{Saneamento} e \var{IDH} foram replicadas para os imóveis do respectivo bairro, portanto, todos os imóveis do bairro $ i $ possuem o mesmo valor para a mesma variável. Os valores ausentes de bairros para uma variável foram substituídos pela média aritmética dos bairros vizinhos conforme descrito abaixo:
 
 \begin{description}
 	\item[Gericinó] As variáveis \var{Média de Anos de Estudo} e \var{IDH}  foram substituídas pela média aritmética dos bairros Bangu, Padre Miguel e Realengo, respectivamente.
@@ -469,4 +564,88 @@ A maioria das variáveis sócio econômicas foram obtidas a partir do Armazém d
 
 \end{description}
 
-As variáveis relacionadas a criminalidade \var{} foram recuperadas dos relatórios do inst
+As variáveis relacionadas a criminalidade, \var{Crimes de Roubo} e \var{Crimes Violentos}, não apresentaram valores ausentes para os bairros dos imóveis. 
+
+A seguir apresentamos as visualizações de boxplot e histograma para as variáveis socioeconômicas.
+
+\subsubsection{Média de anos de estudo}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_se_anos_estudo_boxhist}
+	\caption{Boxplot e histograma da variável \var{se\_anos\_estudo}}
+	\label{fig:var_se_anos_estudo_boxhist}
+\end{figure} 
+
+\subsubsection{Percentual de alfabetização}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_se_anos_estudo_boxhist}
+	\caption{Boxplot e histograma da variável \var{se\_anos\_estudo}}
+	\label{fig:var_se_anos_estudo_boxhist}
+\end{figure} 
+
+\subsubsection{Percentual de alfabetização}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_se_perc_alfabetizacao_boxhist}
+	\caption{Boxplot e histograma da variável \var{se\_perc\_alfabetizacao}}
+	\label{fig:var_se_perc_alfabetizacao_boxhist}
+\end{figure} 
+
+\subsubsection{Renda nominal}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_se_renda_boxhist}
+	\caption{Boxplot e histograma da variável \var{se\_renda}}
+	\label{fig:var_se_renda_boxhist}
+\end{figure} 
+
+\subsubsection{Saneamento}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_se_saneamento_boxhist}
+	\caption{Boxplot e histograma da variável \var{se\_saneamento}}
+	\label{fig:var_se_saneamento_boxhist}
+\end{figure} 
+
+\subsubsection{Percentual de alfabetização}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_se_anos_estudo_boxhist}
+	\caption{Boxplot e histograma da variável \var{se\_anos\_estudo}}
+	\label{fig:var_se_anos_estudo_boxhist}
+\end{figure} 
+
+\subsubsection{Índice de Desenvolvimento Humano}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_se_idh_boxhist}
+	\caption{Boxplot e histograma da variável \var{se\_idh}}
+	\label{fig:var_idh_boxhist}
+\end{figure} 
+
+\subsubsection{Crimes de roubo}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_se_crm_roubo_boxhist}
+	\caption{Boxplot e histograma da variável \var{se\_crm\_roubo}}
+	\label{fig:var_se_crm_roubo_boxhist}
+\end{figure} 
+
+\subsubsection{Crimes violentos}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{img/var_se_crm_violento_boxhist}
+	\caption{Boxplot e histograma da variável \var{se\_crm\_violento}}
+	\label{fig:var_se_crm_violento_boxhist}
+\end{figure} 
+
