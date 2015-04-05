@@ -3,13 +3,11 @@
 import sys,os; 
 import pandas as pd
 import psycopg2
-from mpltools import style
 import unicodedata
-import geopandas as gd
 from scipy.stats import norm as gauss, probplot, cumfreq
 from matplotlib import rcParams
 from  matplotlib.pyplot import figure, xlim, ylim,pcolor, colorbar, xticks, \
-    yticks, subplots, subplot
+    yticks, subplots, subplot, style
 from numpy import linspace, arange,std, polyfit, polyval,sqrt
 
 from matplotlib.gridspec import GridSpec
@@ -24,7 +22,7 @@ sys.path.append(path)
 import dataset as d
 
 # Connect to an existing database
-con = psycopg2.connect("dbname=zap user=sergio")
+#con = psycopg2.connect("dbname=zap user=sergio")
 
 def set_style(sty='ggplot'):
     style.use(sty)
@@ -38,10 +36,6 @@ def get(sql,id_='id',con=None):
     if con == None: con = d.conecta_db()
     return pd.io.sql.read_sql(sql, con, index_col=id_)
 
-def get_geo(sql, con=None):
-    if con == None: con = d.conecta_db()
-    return gd.GeoDataFrame.from_postgis(sql, con)
-    
 tam_fig_original = None
 def tam_figura(largura=None, altura=None):
     if tam_fig_original == None:
@@ -116,7 +110,8 @@ def plot_residual(smres):
     xlim(xlim_);
     ylim(ylim_);
 
-def prep_formula(dataframe, dataframe_name, var_dep='preco', func=None):
+
+def prep_formula(dataframe, dataframe_name, var_dep='preco', func=None, cat=[],ignore=[]):
     
         
 
@@ -131,7 +126,7 @@ def prep_formula(dataframe, dataframe_name, var_dep='preco', func=None):
     cols_dep = set(['m2','preco'])
 
     # Juntar todas as colunas a serem removidas do modelo.
-    cols_excluded = cols_ids.union(cols_nulos).union(cols_dep)
+    cols_excluded = cols_ids.union(cols_nulos).union(cols_dep).union(set(ignore))
 
     # Definir as variáveis para o modelo.
     cols = set(dataframe.columns) - cols_excluded
@@ -143,6 +138,10 @@ def prep_formula(dataframe, dataframe_name, var_dep='preco', func=None):
         yname = '{}.{} '.format(dataframe_name, var_dep)
     formula = yname + ' ~ ' +  \
         ' + '.join([dataframe_name + '.'+c for c in cols])
+
+    for c in cat:
+        formula = formula.replace('{}.{}'.format(dataframe_name,c),
+             'C({}.{})'.format(dataframe_name,c))
     
     return formula, cols, cols_excluded    
     
@@ -187,10 +186,10 @@ def print_autocorr(dataframe,cols_excluded=[]):
     cols_autoc = cols_autocorr(matrix_corr)
 
     if len(cols_autoc) == 0:
-        print 'Não há colunas autocorrelacionadas.'
+        print u'Não há colunas autocorrelacionadas.'
     else:
         print 'Coluna'.ljust(20),'|', 'Autocorrelacionada com '.ljust(50)
-        for k,c in cols_autoc.iteritems():
+        for k,c in cols_autoc.items():
             print str(k).ljust(20),':', str(c).ljust(50)
     
 def scatter_distancia(dfx,suptitle=None):
@@ -251,4 +250,52 @@ def plot_boxhist(x,titulo=None,xlabel=None):
         
 def rmse(resid):
     return sqrt((resid**2/len(resid)).sum())
+    
+    
+def get_imoveis_dataframe(with_missing_data=True):
+
+    # Variáveis intrínsecas básicas.
+    df = get('select id,area,preco,condominio,m2,garagem,quartos,'+
+               'suites,lat,lng,bairro_g,id_bairro_g from vwimovel', None)
+
+    # Variáveis sócio econômicas, por bairro.
+    df_soc = get('select *  from _var_socioecon ',None)
+    del df_soc['nome']
+
+    # Unir imóveis com variáveis socioeconômicas por bairro.
+    df = pd.merge(df,df_soc, left_on='id_bairro_g', right_on='gid', how='inner')
+    del df_soc
+
+    # Variáveis espaciais.
+    df_dist = get('select id, dist_favela,dist_bombeiro,dist_centro,' + \
+        'dist_centro_lng,dist_centro_lat,dist_delegacia,dist_lagoa,' + \
+        'dist_logradouro,dist_metro,dist_praia,dist_saude_publica,' + \
+        'dist_saude_privada,dist_trem from vw_distancia', None)
+
+    # Demais variáveis intrínsecas dummies.
+    var_not_dummies = ['andar','elevadores','ano','unidades'] 
+    df_int = get('select * from _var_intrinseca', None)
+    cols = list(set(df_int.columns.tolist()) - 
+        set(var_not_dummies))
+    cols_ = ['dm_'+i.replace(' ','_') for i in cols if i <> 'id']
+    df_int.columns = ['id'] + cols_ + var_not_dummies
+
+    # Unir com variáveis espaciais e intrínsecas.
+    df_int.index = df_int.id
+    df_dist.index = df_dist.id
+    df.index = df.id
+    del df['id'], df_dist['id'], df_int['id']
+    df = pd.concat([df,df_dist,df_int], axis=1, join='inner')
+    del df['gid'], df_dist, df_int
+    
+    if not with_missing_data:
+        df.condominio.fillna(0, inplace=True)
+        df.garagem.fillna(0, inplace=True)
+        df.suites.fillna(0, inplace=True)
+        del df['elevadores'],df['andar'],df['ano'],df['unidades']    
+        
+    
+    return df
+
+
         
