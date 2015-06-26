@@ -1,0 +1,40 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  preco   R-squared:                       0.926
+Model:                            OLS   Adj. R-squared:                  0.906
+Method:                 Least Squares   F-statistic:                     46.01
+Date:                Thu, 25 Jun 2015   Prob (F-statistic):           1.43e-22
+Time:                        18:31:45   Log-Likelihood:                -392.43
+No. Observations:                  62   AIC:                             812.9
+Df Residuals:                      48   BIC:                             842.6
+Df Model:                          13                                         
+Covariance Type:            nonrobust                                         
+======================================================================================
+                         coef    std err          t      P>|t|      [95.0% Conf. Int.]
+--------------------------------------------------------------------------------------
+Intercept           -375.2778    431.515     -0.870      0.389     -1242.896   492.340
+dm_closet            415.8634     98.382      4.227      0.000       218.053   613.674
+area                  10.1723      0.826     12.315      0.000         8.512    11.833
+garagem_4            736.1091    129.813      5.671      0.000       475.102   997.116
+dm_sol_manha         360.7215    175.341      2.057      0.045         8.175   713.268
+dist_saude_privada   747.2927    243.398      3.070      0.004       257.908  1236.677
+dist_delegacia      3174.6634    889.749      3.568      0.001      1385.703  4963.624
+dm_dep_empregada    -113.3851     47.091     -2.408      0.020      -208.067   -18.703
+dm_duplex           -405.7534    113.040     -3.589      0.001      -633.035  -178.472
+dm_salao_festas      270.0196     51.594      5.234      0.000       166.282   373.757
+dm_seguranca         425.4826    128.524      3.311      0.002       167.069   683.896
+dist_metro         -2579.1338    784.755     -3.287      0.002     -4156.989 -1001.278
+garagem_2            157.5297     51.906      3.035      0.004        53.167   261.893
+dm_triplex         -1147.9961    127.760     -8.986      0.000     -1404.875  -891.117
+suites_3           -1147.9961    127.760     -8.986      0.000     -1404.875  -891.117
+==============================================================================
+Omnibus:                        5.608   Durbin-Watson:                   1.828
+Prob(Omnibus):                  0.061   Jarque-Bera (JB):                4.786
+Skew:                          -0.655   Prob(JB):                       0.0914
+Kurtosis:                       3.367   Cond. No.                     6.48e+18
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 2.05e-32. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.

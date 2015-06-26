@@ -1,0 +1,33 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  preco   R-squared:                       0.800
+Model:                            OLS   Adj. R-squared:                  0.784
+Method:                 Least Squares   F-statistic:                     51.16
+Date:                Thu, 25 Jun 2015   Prob (F-statistic):           4.58e-21
+Time:                        18:33:03   Log-Likelihood:                -364.13
+No. Observations:                  70   AIC:                             740.3
+Df Residuals:                      64   BIC:                             753.7
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+===============================================================================
+                  coef    std err          t      P>|t|      [95.0% Conf. Int.]
+-------------------------------------------------------------------------------
+Intercept    1906.3977    300.049      6.354      0.000      1306.980  2505.815
+preco_lag      -5.0924      0.871     -5.847      0.000        -6.832    -3.353
+area            2.1203      0.189     11.237      0.000         1.743     2.497
+dm_banheira   -54.6947     18.829     -2.905      0.005       -92.310   -17.079
+garagem_1      44.9129     11.355      3.955      0.000        22.228    67.597
+dist_praia   -140.7921     21.423     -6.572      0.000      -183.589   -97.995
+dm_piscina    -54.6947     18.829     -2.905      0.005       -92.310   -17.079
+dm_closet     -54.6947     18.829     -2.905      0.005       -92.310   -17.079
+==============================================================================
+Omnibus:                        4.464   Durbin-Watson:                   1.914
+Prob(Omnibus):                  0.107   Jarque-Bera (JB):                4.323
+Skew:                           0.293   Prob(JB):                        0.115
+Kurtosis:                       4.068   Cond. No.                     7.84e+35
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 1.12e-65. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.

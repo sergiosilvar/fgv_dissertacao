@@ -1,0 +1,45 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  preco   R-squared:                       0.926
+Model:                            OLS   Adj. R-squared:                  0.874
+Method:                 Least Squares   F-statistic:                     17.97
+Date:                Thu, 25 Jun 2015   Prob (F-statistic):           2.45e-10
+Time:                        18:31:56   Log-Likelihood:                -231.84
+No. Observations:                  45   AIC:                             501.7
+Df Residuals:                      26   BIC:                             536.0
+Df Model:                          18                                         
+Covariance Type:            nonrobust                                         
+======================================================================================
+                         coef    std err          t      P>|t|      [95.0% Conf. Int.]
+--------------------------------------------------------------------------------------
+Intercept            6.59e+04   9236.392      7.134      0.000      4.69e+04  8.49e+04
+dist_centro         2351.9425    490.534      4.795      0.000      1343.635  3360.250
+area                   1.4637      0.688      2.126      0.043         0.049     2.879
+dm_elevador          261.1740     54.071      4.830      0.000       150.029   372.319
+dist_saude_publica  -915.4870    318.878     -2.871      0.008     -1570.951  -260.023
+dm_copa             -757.8706    128.837     -5.882      0.000     -1022.699  -493.042
+dm_recuado           113.2819     51.428      2.203      0.037         7.570   218.994
+garagem_1             85.6950     22.509      3.807      0.001        39.427   131.963
+dm_blindex          -270.1204     57.179     -4.724      0.000      -387.654  -152.586
+dm_vista_mar        -145.4808     40.434     -3.598      0.001      -228.594   -62.367
+dist_logradouro    -1047.1239    294.771     -3.552      0.001     -1653.035  -441.213
+dist_praia         -1.419e+04   2003.891     -7.082      0.000     -1.83e+04 -1.01e+04
+dm_salao_festas      803.4356    119.508      6.723      0.000       557.783  1049.088
+dm_play             -759.8933    119.467     -6.361      0.000     -1005.461  -514.325
+dm_portaria          113.2819     51.428      2.203      0.037         7.570   218.994
+quartos_3            157.4501     47.278      3.330      0.003        60.269   254.631
+dm_seguranca         279.8097     79.010      3.541      0.002       117.402   442.218
+dist_metro          2348.7568    439.718      5.342      0.000      1444.903  3252.611
+dm_servico          -229.1349     78.773     -2.909      0.007      -391.054   -67.215
+dist_trem          -1.223e+04   1772.950     -6.897      0.000     -1.59e+04 -8583.623
+==============================================================================
+Omnibus:                       27.789   Durbin-Watson:                   2.173
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               65.556
+Skew:                           1.611   Prob(JB):                     5.82e-15
+Kurtosis:                       7.958   Cond. No.                     3.36e+18
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 2.79e-32. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.

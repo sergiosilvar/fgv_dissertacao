@@ -1,0 +1,34 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  preco   R-squared:                       0.839
+Model:                            OLS   Adj. R-squared:                  0.806
+Method:                 Least Squares   F-statistic:                     25.09
+Date:                Thu, 25 Jun 2015   Prob (F-statistic):           9.06e-16
+Time:                        18:33:23   Log-Likelihood:                -317.24
+No. Observations:                  59   AIC:                             656.5
+Df Residuals:                      48   BIC:                             679.3
+Df Model:                          10                                         
+Covariance Type:            nonrobust                                         
+======================================================================================
+                         coef    std err          t      P>|t|      [95.0% Conf. Int.]
+--------------------------------------------------------------------------------------
+Intercept            124.0394     38.431      3.228      0.002        46.769   201.309
+dm_churrasqueira     -72.7167     23.634     -3.077      0.003      -120.237   -25.197
+area                   2.1004      0.226      9.278      0.000         1.645     2.556
+dist_saude_publica   134.8141     45.955      2.934      0.005        42.414   227.214
+dist_saude_privada  -143.1433     69.316     -2.065      0.044      -282.513    -3.774
+dm_copa             -130.1442     47.799     -2.723      0.009      -226.250   -34.038
+dm_frente             90.0586     34.248      2.630      0.011        21.199   158.919
+dm_indevassavel     -100.5484     41.773     -2.407      0.020      -184.538   -16.559
+quartos_3            167.2960     36.318      4.606      0.000        94.274   240.318
+quartos_2             56.8880     24.302      2.341      0.023         8.025   105.751
+dm_varanda            71.4889     23.813      3.002      0.004        23.610   119.368
+==============================================================================
+Omnibus:                        0.076   Durbin-Watson:                   1.807
+Prob(Omnibus):                  0.963   Jarque-Bera (JB):                0.267
+Skew:                           0.025   Prob(JB):                        0.875
+Kurtosis:                       2.674   Cond. No.                         919.
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

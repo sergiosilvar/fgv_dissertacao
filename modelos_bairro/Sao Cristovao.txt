@@ -1,0 +1,37 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  preco   R-squared:                       0.955
+Model:                            OLS   Adj. R-squared:                  0.951
+Method:                 Least Squares   F-statistic:                     248.2
+Date:                Thu, 25 Jun 2015   Prob (F-statistic):           2.99e-59
+Time:                        18:33:17   Log-Likelihood:                -604.00
+No. Observations:                 102   AIC:                             1226.
+Df Residuals:                      93   BIC:                             1250.
+Df Model:                           8                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------------
+Intercept          356.5113     64.052      5.566      0.000       229.317   483.705
+area                 3.1091      0.551      5.643      0.000         2.015     4.203
+dm_cobertura      1444.7123     55.155     26.194      0.000      1335.186  1554.239
+dist_bombeiro      -74.1389     27.204     -2.725      0.008      -128.161   -20.117
+dm_linear         2051.6450     81.442     25.192      0.000      1889.918  2213.372
+garagem_1           76.6645     20.900      3.668      0.000        35.162   118.167
+dm_duplex         -858.0522     45.724    -18.766      0.000      -948.851  -767.253
+garagem_2         -858.0522     45.724    -18.766      0.000      -948.851  -767.253
+dm_terraco       -1464.9849     78.555    -18.649      0.000     -1620.979 -1308.991
+quartos_4          344.9642     74.717      4.617      0.000       196.591   493.338
+dist_trem         -112.9387     21.410     -5.275      0.000      -155.455   -70.423
+dm_andar_inteiro  -858.0522     45.724    -18.766      0.000      -948.851  -767.253
+==============================================================================
+Omnibus:                       30.203   Durbin-Watson:                   1.893
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              411.429
+Skew:                          -0.085   Prob(JB):                     4.56e-90
+Kurtosis:                      12.838   Cond. No.                     3.65e+19
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 4.77e-34. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.

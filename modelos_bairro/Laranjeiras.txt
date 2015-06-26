@@ -1,0 +1,41 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  preco   R-squared:                       0.824
+Model:                            OLS   Adj. R-squared:                  0.820
+Method:                 Least Squares   F-statistic:                     187.2
+Date:                Thu, 25 Jun 2015   Prob (F-statistic):          1.55e-214
+Time:                        18:32:33   Log-Likelihood:                -4179.6
+No. Observations:                 615   AIC:                             8391.
+Df Residuals:                     599   BIC:                             8462.
+Df Model:                          15                                         
+Covariance Type:            nonrobust                                         
+======================================================================================
+                         coef    std err          t      P>|t|      [95.0% Conf. Int.]
+--------------------------------------------------------------------------------------
+Intercept            219.0528     93.846      2.334      0.020        34.746   403.360
+dm_churrasqueira     -98.1295     34.252     -2.865      0.004      -165.399   -30.860
+suites_2             343.3432     41.138      8.346      0.000       262.551   424.135
+preco_lag              0.1481      0.072      2.056      0.040         0.007     0.290
+area                   6.2849      0.279     22.564      0.000         5.738     6.832
+suites_1             110.4364     20.850      5.297      0.000        69.489   151.384
+dist_saude_privada  -250.3173     65.519     -3.821      0.000      -378.992  -121.643
+garagem_1            128.8166     20.897      6.164      0.000        87.776   169.857
+garagem_2            267.1601     35.155      7.599      0.000       198.118   336.202
+dist_favela         -207.8231     73.999     -2.808      0.005      -353.152   -62.494
+dm_duplex           -225.1414     61.651     -3.652      0.000      -346.220  -104.063
+dm_piscina           216.1063     34.101      6.337      0.000       149.134   283.079
+quartos_3             78.5488     22.438      3.501      0.000        34.482   122.616
+dm_seguranca          94.1503     45.391      2.074      0.038         5.005   183.296
+dm_play               70.0053     27.698      2.527      0.012        15.609   124.402
+quartos_4            283.0381     45.519      6.218      0.000       193.641   372.435
+==============================================================================
+Omnibus:                      256.751   Durbin-Watson:                   2.076
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             2940.873
+Skew:                           1.524   Prob(JB):                         0.00
+Kurtosis:                      13.270   Cond. No.                     1.43e+04
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.43e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.

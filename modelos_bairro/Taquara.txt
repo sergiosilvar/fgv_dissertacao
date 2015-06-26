@@ -1,0 +1,48 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  preco   R-squared:                       0.793
+Model:                            OLS   Adj. R-squared:                  0.784
+Method:                 Least Squares   F-statistic:                     94.08
+Date:                Thu, 25 Jun 2015   Prob (F-statistic):          3.56e-161
+Time:                        18:33:22   Log-Likelihood:                -2940.3
+No. Observations:                 538   AIC:                             5925.
+Df Residuals:                     516   BIC:                             6019.
+Df Model:                          21                                         
+Covariance Type:            nonrobust                                         
+======================================================================================
+                         coef    std err          t      P>|t|      [95.0% Conf. Int.]
+--------------------------------------------------------------------------------------
+Intercept           -172.9960     54.792     -3.157      0.002      -280.638   -65.354
+dm_closet            -69.4759     19.424     -3.577      0.000      -107.636   -31.316
+dist_saude_privada   -48.4094     12.242     -3.954      0.000       -72.460   -24.359
+dm_andar_alto         92.2038     23.118      3.988      0.000        46.787   137.621
+dm_mezanino           62.1432     19.316      3.217      0.001        24.196   100.090
+dist_trem             18.1391      4.644      3.906      0.000         9.017    27.262
+preco_lag              0.5234      0.096      5.453      0.000         0.335     0.712
+area                   2.0980      0.139     15.072      0.000         1.825     2.371
+dm_original          851.4390     61.478     13.850      0.000       730.662   972.216
+dm_frente            -55.5386     18.388     -3.020      0.003       -91.664   -19.413
+dm_escritura         -20.1713      9.809     -2.056      0.040       -39.442    -0.900
+dm_dep_empregada      23.2594      9.457      2.459      0.014         4.680    41.838
+dm_lateral            62.1432     19.316      3.217      0.001        24.196   100.090
+dm_terraco           -71.3013     22.366     -3.188      0.002      -115.242   -27.361
+suites_2              59.3604     14.969      3.966      0.000        29.953    88.768
+suites_3              99.9054     27.479      3.636      0.000        45.920   153.891
+suites_1              48.2625      6.199      7.786      0.000        36.085    60.440
+garagem_4            450.5469     69.556      6.477      0.000       313.899   587.195
+dm_cobertura         -60.5551     18.511     -3.271      0.001       -96.921   -24.190
+dm_sauna              30.4707      7.076      4.306      0.000        16.570    44.371
+quartos_3             78.8146     13.034      6.047      0.000        53.208   104.422
+quartos_2             36.9024     11.280      3.272      0.001        14.743    59.062
+quartos_4            331.4871     39.375      8.419      0.000       254.132   408.842
+==============================================================================
+Omnibus:                      209.484   Durbin-Watson:                   2.063
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             2156.837
+Skew:                           1.405   Prob(JB):                         0.00
+Kurtosis:                      12.398   Cond. No.                     1.16e+19
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 4.9e-31. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.

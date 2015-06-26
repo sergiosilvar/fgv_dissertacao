@@ -1,0 +1,50 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  preco   R-squared:                       0.818
+Model:                            OLS   Adj. R-squared:                  0.816
+Method:                 Least Squares   F-statistic:                     349.0
+Date:                Thu, 25 Jun 2015   Prob (F-statistic):               0.00
+Time:                        18:31:24   Log-Likelihood:                -12885.
+No. Observations:                1806   AIC:                         2.582e+04
+Df Residuals:                    1782   BIC:                         2.595e+04
+Df Model:                          23                                         
+Covariance Type:            nonrobust                                         
+======================================================================================
+                         coef    std err          t      P>|t|      [95.0% Conf. Int.]
+--------------------------------------------------------------------------------------
+Intercept          -2.228e-05   5.91e-06     -3.772      0.000     -3.39e-05 -1.07e-05
+dist_saude_privada    84.1017     33.403      2.518      0.012        18.589   149.614
+dist_lagoa           167.8100     25.807      6.503      0.000       117.196   218.425
+preco_lag              0.1982      0.028      6.996      0.000         0.143     0.254
+area                   7.6641      0.198     38.705      0.000         7.276     8.052
+dm_elevador          -69.1757     21.661     -3.194      0.001      -111.660   -26.692
+dm_frente            121.7274     29.855      4.077      0.000        63.172   180.283
+dist_delegacia       -61.0618     14.561     -4.194      0.000       -89.620   -32.504
+dist_favela           36.0574      8.794      4.100      0.000        18.810    53.305
+dist_logradouro      183.8896     28.097      6.545      0.000       128.784   238.996
+dist_centro           47.6055     16.297      2.921      0.004        15.642    79.569
+dm_banheira           50.2987     24.343      2.066      0.039         2.555    98.043
+dm_creche            -75.9800     31.246     -2.432      0.015      -137.263   -14.697
+dm_duplex            161.6194     68.266      2.367      0.018        27.729   295.510
+se_renda              -0.1523      0.040     -3.772      0.000        -0.231    -0.073
+suites_4             284.0515     50.229      5.655      0.000       185.538   382.565
+suites_2             104.9956     32.181      3.263      0.001        41.880   168.111
+suites_3              99.1844     37.640      2.635      0.008        25.362   173.007
+suites_1              77.7511     24.712      3.146      0.002        29.283   126.220
+garagem_4            594.7200     60.170      9.884      0.000       476.708   712.732
+dm_cobertura        -249.9021     56.715     -4.406      0.000      -361.138  -138.666
+garagem_2             91.9413     19.513      4.712      0.000        53.671   130.212
+garagem_3            222.9649     30.046      7.421      0.000       164.037   281.893
+dm_vista_mar          64.5890     26.520      2.435      0.015        12.576   116.602
+quartos_4             69.5159     22.549      3.083      0.002        25.291   113.740
+==============================================================================
+Omnibus:                      685.350   Durbin-Watson:                   2.007
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             7040.878
+Skew:                           1.482   Prob(JB):                         0.00
+Kurtosis:                      12.208   Cond. No.                     6.59e+17
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is 2.03e-25. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.

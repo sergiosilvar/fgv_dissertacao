@@ -1,0 +1,45 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  preco   R-squared:                       0.829
+Model:                            OLS   Adj. R-squared:                  0.825
+Method:                 Least Squares   F-statistic:                     202.8
+Date:                Thu, 25 Jun 2015   Prob (F-statistic):          2.02e-289
+Time:                        18:32:35   Log-Likelihood:                -5975.2
+No. Observations:                 816   AIC:                         1.199e+04
+Df Residuals:                     796   BIC:                         1.208e+04
+Df Model:                          19                                         
+Covariance Type:            nonrobust                                         
+======================================================================================
+                         coef    std err          t      P>|t|      [95.0% Conf. Int.]
+--------------------------------------------------------------------------------------
+Intercept            1.51e+04   2925.758      5.160      0.000      9353.502  2.08e+04
+dm_sala_jantar      -114.0755     37.399     -3.050      0.002      -187.487   -40.664
+quartos_4            361.6260     54.518      6.633      0.000       254.610   468.642
+garagem_3            704.0643     97.398      7.229      0.000       512.877   895.252
+area                  13.0108      0.469     27.762      0.000        12.091    13.931
+garagem_4            753.2298    381.414      1.975      0.049         4.534  1501.925
+dm_elevador          -96.3273     33.856     -2.845      0.005      -162.785   -29.869
+dist_saude_publica   511.8813    215.235      2.378      0.018        89.387   934.376
+dm_banheira          166.0810     82.613      2.010      0.045         3.916   328.246
+garagem_1            385.6832     39.639      9.730      0.000       307.873   463.493
+garagem_2            559.7023     58.699      9.535      0.000       444.479   674.925
+dm_play               90.1043     35.226      2.558      0.011        20.957   159.251
+dist_favela         -562.1023    147.306     -3.816      0.000      -851.257  -272.948
+dist_praia         -1550.3907    210.640     -7.360      0.000     -1963.867 -1136.915
+dm_triplex           793.0754    373.808      2.122      0.034        59.309  1526.842
+quartos_3            110.6926     35.455      3.122      0.002        41.097   180.288
+suites_1             183.6692     28.638      6.414      0.000       127.455   239.884
+dm_varanda            92.7776     38.673      2.399      0.017        16.865   168.690
+dist_trem          -1673.2214    343.233     -4.875      0.000     -2346.971  -999.472
+dm_andar_inteiro     199.0872     76.672      2.597      0.010        48.585   349.590
+==============================================================================
+Omnibus:                       59.493   Durbin-Watson:                   2.000
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              273.305
+Skew:                          -0.038   Prob(JB):                     4.49e-60
+Kurtosis:                       5.834   Cond. No.                     2.74e+04
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.74e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.

@@ -1,0 +1,37 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  preco   R-squared:                       0.908
+Model:                            OLS   Adj. R-squared:                  0.900
+Method:                 Least Squares   F-statistic:                     114.0
+Date:                Thu, 25 Jun 2015   Prob (F-statistic):           7.81e-55
+Time:                        18:32:08   Log-Likelihood:                -805.42
+No. Observations:                 126   AIC:                             1633.
+Df Residuals:                     115   BIC:                             1664.
+Df Model:                          10                                         
+Covariance Type:            nonrobust                                         
+================================================================================
+                   coef    std err          t      P>|t|      [95.0% Conf. Int.]
+--------------------------------------------------------------------------------
+Intercept     3550.9251   1012.988      3.505      0.001      1544.390  5557.460
+dm_closet      570.0899    164.642      3.463      0.001       243.965   896.214
+area             8.5954      0.374     22.977      0.000         7.854     9.336
+dm_original   -182.4732     90.665     -2.013      0.046      -362.063    -2.884
+dm_cobertura  -294.5001     60.898     -4.836      0.000      -415.128  -173.872
+dm_blindex     126.6301     49.410      2.563      0.012        28.758   224.502
+suites_3       567.2587    158.955      3.569      0.001       252.399   882.119
+dm_duplex     -294.5001     60.898     -4.836      0.000      -415.128  -173.872
+preco_lag        1.3323      0.256      5.206      0.000         0.825     1.839
+dist_centro   -946.7505    226.112     -4.187      0.000     -1394.636  -498.865
+dm_terraco     341.9351     81.723      4.184      0.000       180.057   503.813
+dist_lagoa    -549.3697    155.433     -3.534      0.001      -857.253  -241.486
+==============================================================================
+Omnibus:                      120.111   Durbin-Watson:                   2.113
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             2779.316
+Skew:                           3.033   Prob(JB):                         0.00
+Kurtosis:                      25.195   Cond. No.                     3.35e+19
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The smallest eigenvalue is  7e-32. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.

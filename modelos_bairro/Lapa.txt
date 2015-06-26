@@ -1,0 +1,39 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  preco   R-squared:                       0.808
+Model:                            OLS   Adj. R-squared:                  0.793
+Method:                 Least Squares   F-statistic:                     57.15
+Date:                Thu, 25 Jun 2015   Prob (F-statistic):           3.05e-56
+Time:                        18:32:29   Log-Likelihood:                -1057.2
+No. Observations:                 191   AIC:                             2142.
+Df Residuals:                     177   BIC:                             2188.
+Df Model:                          13                                         
+Covariance Type:            nonrobust                                         
+======================================================================================
+                         coef    std err          t      P>|t|      [95.0% Conf. Int.]
+--------------------------------------------------------------------------------------
+Intercept             27.9073     68.387      0.408      0.684      -107.052   162.867
+dm_churrasqueira      66.9915     26.773      2.502      0.013        14.155   119.828
+area                   4.2451      0.347     12.240      0.000         3.561     4.930
+dist_saude_publica   175.8304     59.380      2.961      0.003        58.647   293.014
+suites_1              85.4330     21.249      4.021      0.000        43.499   127.367
+garagem_1             65.1723     17.038      3.825      0.000        31.549    98.796
+dist_delegacia      -255.9533     96.553     -2.651      0.009      -446.496   -65.411
+dist_bombeiro         67.0917     33.750      1.988      0.048         0.487   133.696
+dm_fundos           -103.6455     45.935     -2.256      0.025      -194.295   -12.996
+dm_sauna              75.3321     21.586      3.490      0.001        32.733   117.931
+quartos_3             83.9187     26.378      3.181      0.002        31.863   135.974
+dist_centro          173.5351     73.736      2.353      0.020        28.021   319.050
+dm_play               61.5524     21.111      2.916      0.004        19.891   103.214
+dm_salao_festas      -53.3662     19.583     -2.725      0.007       -92.012   -14.721
+==============================================================================
+Omnibus:                        5.050   Durbin-Watson:                   1.761
+Prob(Omnibus):                  0.080   Jarque-Bera (JB):                4.684
+Skew:                          -0.323   Prob(JB):                       0.0962
+Kurtosis:                       3.414   Cond. No.                     1.63e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.63e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
