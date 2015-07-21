@@ -1,46 +1,39 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.845
-Model:                            OLS   Adj. R-squared:                  0.777
-Method:                 Least Squares   F-statistic:                     12.34
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):           9.36e-12
-Time:                        18:31:48   Log-Likelihood:                -331.33
-No. Observations:                  63   AIC:                             702.7
-Df Residuals:                      43   BIC:                             745.5
-Df Model:                          19                                         
+Dep. Variable:                  preco   R-squared:                       0.794
+Model:                            OLS   Adj. R-squared:                  0.740
+Method:                 Least Squares   F-statistic:                     14.56
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):           1.32e-12
+Time:                        11:53:28   Log-Likelihood:                -340.24
+No. Observations:                  63   AIC:                             708.5
+Df Residuals:                      49   BIC:                             738.5
+Df Model:                          13                                         
 Covariance Type:            nonrobust                                         
 ======================================================================================
                          coef    std err          t      P>|t|      [95.0% Conf. Int.]
 --------------------------------------------------------------------------------------
-Intercept          -1.377e+05    2.3e+04     -5.999      0.000     -1.84e+05 -9.14e+04
-dm_dep_empregada    -102.7974     46.431     -2.214      0.032      -196.435    -9.160
-dm_cobertura         162.5257     61.253      2.653      0.011        38.998   286.053
-suites_2             193.8258     60.778      3.189      0.003        71.254   316.397
-dm_closet            215.9828     36.050      5.991      0.000       143.282   288.684
-dist_saude_privada -1371.2065    290.791     -4.715      0.000     -1957.642  -784.771
-dist_saude_publica  1768.8228    297.211      5.951      0.000      1169.439  2368.206
-suites_1              75.0763     16.679      4.501      0.000        41.440   108.713
-dm_frente           -125.4135     61.227     -2.048      0.047      -248.889    -1.938
-dist_delegacia      1630.4770    313.495      5.201      0.000       998.253  2262.701
-dist_bombeiro       -995.0293    251.034     -3.964      0.000     -1501.288  -488.771
-preco_lag            -12.4685      2.616     -4.766      0.000       -17.744    -7.193
-dist_logradouro      353.7350    139.939      2.528      0.015        71.521   635.949
-dist_praia          1.497e+04   2550.891      5.869      0.000      9827.262  2.01e+04
-dm_escritura         101.8305     44.301      2.299      0.026        12.488   191.173
-quartos_2            207.7025     56.932      3.648      0.001        92.887   322.518
-dm_terraco           215.9828     36.050      5.991      0.000       143.282   288.684
-quartos_3            267.2423     56.557      4.725      0.000       153.185   381.300
-dist_centro        -1.991e+04   3386.734     -5.878      0.000     -2.67e+04 -1.31e+04
-dist_trem          -1499.1418    293.633     -5.105      0.000     -2091.310  -906.974
-dist_lagoa          2.444e+04   4116.846      5.937      0.000      1.61e+04  3.27e+04
+Intercept          -1648.5660    388.492     -4.244      0.000     -2429.269  -867.863
+dm_cobertura         201.8872     90.288      2.236      0.030        20.446   383.329
+suites_2             239.4882     62.864      3.810      0.000       113.159   365.817
+area                   1.8550      0.575      3.224      0.002         0.699     3.011
+dist_saude_publica   463.6774    146.657      3.162      0.003       168.959   758.396
+suites_1              92.3331     16.817      5.491      0.000        58.539   126.127
+dm_copa              -67.5858     24.828     -2.722      0.009      -117.480   -17.692
+dist_bombeiro        384.3532     86.376      4.450      0.000       210.773   557.933
+dm_frente           -166.2422     66.346     -2.506      0.016      -299.570   -32.914
+dist_favela         -399.3787     79.975     -4.994      0.000      -560.094  -238.663
+dist_praia           197.2558     37.890      5.206      0.000       121.113   273.399
+dist_metro          -152.8563     74.477     -2.052      0.045      -302.523    -3.190
+dm_sol_manha        -186.9559     67.037     -2.789      0.008      -321.671   -52.241
+dm_terraco           311.7531     70.753      4.406      0.000       169.569   453.937
 ==============================================================================
-Omnibus:                        0.319   Durbin-Watson:                   2.243
-Prob(Omnibus):                  0.853   Jarque-Bera (JB):                0.074
-Skew:                          -0.078   Prob(JB):                        0.964
-Kurtosis:                       3.060   Cond. No.                     5.87e+18
+Omnibus:                        7.745   Durbin-Watson:                   1.727
+Prob(Omnibus):                  0.021   Jarque-Bera (JB):                7.288
+Skew:                           0.648   Prob(JB):                       0.0261
+Kurtosis:                       4.047   Cond. No.                     3.85e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The smallest eigenvalue is 2.09e-31. This might indicate that there are
-strong multicollinearity problems or that the design matrix is singular.
+[2] The condition number is large, 3.85e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

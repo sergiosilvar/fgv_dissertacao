@@ -1,51 +1,52 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.826
-Model:                            OLS   Adj. R-squared:                  0.822
-Method:                 Least Squares   F-statistic:                     196.2
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):               0.00
-Time:                        18:32:04   Log-Likelihood:                -6271.4
-No. Observations:                1056   AIC:                         1.259e+04
-Df Residuals:                    1030   BIC:                         1.272e+04
-Df Model:                          25                                         
+Dep. Variable:                  preco   R-squared:                       0.823
+Model:                            OLS   Adj. R-squared:                  0.818
+Method:                 Least Squares   F-statistic:                     183.4
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):               0.00
+Time:                        11:53:39   Log-Likelihood:                -6283.3
+No. Observations:                1056   AIC:                         1.262e+04
+Df Residuals:                    1029   BIC:                         1.275e+04
+Df Model:                          26                                         
 Covariance Type:            nonrobust                                         
 ======================================================================================
                          coef    std err          t      P>|t|      [95.0% Conf. Int.]
 --------------------------------------------------------------------------------------
-Intercept           1.423e+04   1986.785      7.164      0.000      1.03e+04  1.81e+04
-dm_planejad           27.5486     11.189      2.462      0.014         5.592    49.505
-dm_closet             38.4931     12.682      3.035      0.002        13.607    63.379
-dm_seguranca          32.4696     12.235      2.654      0.008         8.462    56.477
-dm_salao_jogos        33.9656      8.526      3.984      0.000        17.236    50.695
-area                   3.1369      0.099     31.640      0.000         2.942     3.331
-dm_frente            -73.4510     25.441     -2.887      0.004      -123.373   -23.529
-dist_delegacia     -1.116e+04   1999.421     -5.582      0.000     -1.51e+04 -7238.356
-dm_blindex           -25.1264     10.996     -2.285      0.023       -46.703    -3.550
-dm_churrasqueira      19.7314      7.011      2.814      0.005         5.974    33.489
-dist_saude_publica  -108.3946     18.565     -5.839      0.000      -144.824   -71.965
-dist_bombeiro       1.097e+04   1974.560      5.553      0.000      7090.412  1.48e+04
-dist_praia          -734.0383    104.081     -7.053      0.000      -938.272  -529.804
-suites_4             217.1727     67.694      3.208      0.001        84.340   350.006
-suites_2              71.5873     12.546      5.706      0.000        46.970    96.205
-suites_3             165.9198     24.654      6.730      0.000       117.542   214.297
-suites_1              70.2848      8.413      8.354      0.000        53.776    86.793
-dm_porcelanato        23.9161     11.151      2.145      0.032         2.034    45.798
-dm_portaria          -40.6717     10.562     -3.851      0.000       -61.396   -19.947
-dm_cobertura         -37.2441     13.861     -2.687      0.007       -64.444   -10.045
-garagem_1            -52.4650      7.770     -6.752      0.000       -67.713   -37.217
-dm_est_visitantes    -29.5553     11.253     -2.626      0.009       -51.637    -7.474
-dm_sauna              16.3942      7.551      2.171      0.030         1.578    31.211
-quartos_3             30.5732      7.188      4.253      0.000        16.468    44.678
-dist_metro          -792.6801    111.239     -7.126      0.000     -1010.961  -574.400
-quartos_4             48.2839     13.964      3.458      0.001        20.883    75.685
+Intercept            159.2137     99.826      1.595      0.111       -36.672   355.099
+dm_planejad           27.8669     11.317      2.462      0.014         5.660    50.074
+dm_closet             40.9565     12.923      3.169      0.002        15.597    66.316
+dist_saude_privada   -52.5928     20.679     -2.543      0.011       -93.171   -12.015
+dm_est_visitantes    -34.4742     11.425     -3.017      0.003       -56.894   -12.055
+dm_seguranca          30.6002     12.576      2.433      0.015         5.922    55.279
+dm_salao_festas      -14.7039      7.407     -1.985      0.047       -29.238    -0.169
+dm_salao_jogos        38.8049      9.088      4.270      0.000        20.971    56.639
+area                   3.1677      0.100     31.556      0.000         2.971     3.365
+dm_frente            -69.8270     25.846     -2.702      0.007      -120.544   -19.110
+dm_blindex           -23.8178     11.136     -2.139      0.033       -45.670    -1.965
+dm_churrasqueira      25.1400      7.602      3.307      0.001        10.223    40.057
+dist_saude_publica   -35.1341     12.150     -2.892      0.004       -58.975   -11.293
+dist_bombeiro         37.6438     11.020      3.416      0.001        16.020    59.268
+preco_lag              0.2536      0.064      3.962      0.000         0.128     0.379
+suites_4             243.3205     67.935      3.582      0.000       110.013   376.628
+suites_2              71.6531     12.734      5.627      0.000        46.666    96.640
+suites_3             170.4201     25.017      6.812      0.000       121.330   219.510
+suites_1              67.5111      8.463      7.978      0.000        50.905    84.117
+dm_porcelanato        25.6797     11.301      2.272      0.023         3.504    47.855
+dm_portaria          -45.4092     10.690     -4.248      0.000       -66.387   -24.432
+dm_cobertura         -36.4818     14.106     -2.586      0.010       -64.162    -8.801
+garagem_2             56.1686      8.278      6.785      0.000        39.925    72.412
+garagem_3             51.5484     22.188      2.323      0.020         8.009    95.087
+dm_sauna              21.1750      7.655      2.766      0.006         6.154    36.196
+quartos_2            -25.1580      7.062     -3.562      0.000       -39.016   -11.300
+dist_metro           -20.6193      7.597     -2.714      0.007       -35.528    -5.711
 ==============================================================================
-Omnibus:                      280.586   Durbin-Watson:                   1.957
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):             2328.250
-Skew:                           0.978   Prob(JB):                         0.00
-Kurtosis:                      10.006   Cond. No.                     1.30e+05
+Omnibus:                      257.510   Durbin-Watson:                   1.934
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1931.471
+Skew:                           0.908   Prob(JB):                         0.00
+Kurtosis:                       9.372   Cond. No.                     2.06e+04
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 1.3e+05. This might indicate that there are
+[2] The condition number is large, 2.06e+04. This might indicate that there are
 strong multicollinearity or other numerical problems.

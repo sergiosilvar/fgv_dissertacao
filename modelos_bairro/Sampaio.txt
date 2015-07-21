@@ -1,31 +1,29 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.646
-Model:                            OLS   Adj. R-squared:                  0.597
-Method:                 Least Squares   F-statistic:                     13.16
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):           2.58e-07
-Time:                        18:33:11   Log-Likelihood:                -222.29
-No. Observations:                  42   AIC:                             456.6
-Df Residuals:                      36   BIC:                             467.0
+Dep. Variable:                  preco   R-squared:                       0.702
+Model:                            OLS   Adj. R-squared:                  0.661
+Method:                 Least Squares   F-statistic:                     16.98
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):           1.31e-08
+Time:                        11:54:33   Log-Likelihood:                -218.68
+No. Observations:                  42   AIC:                             449.4
+Df Residuals:                      36   BIC:                             459.8
 Df Model:                           5                                         
 Covariance Type:            nonrobust                                         
-==================================================================================
-                     coef    std err          t      P>|t|      [95.0% Conf. Int.]
-----------------------------------------------------------------------------------
-Intercept       1.638e+04   6031.569      2.715      0.010      4143.258  2.86e+04
-dist_praia      -945.4329    369.777     -2.557      0.015     -1695.376  -195.490
-area               2.2014      0.507      4.339      0.000         1.172     3.230
-suites_1          77.7697     22.358      3.478      0.001        32.425   123.115
-dist_delegacia  -585.6618    267.290     -2.191      0.035     -1127.750   -43.573
-dist_lagoa     -1094.6296    389.010     -2.814      0.008     -1883.579  -305.680
+======================================================================================
+                         coef    std err          t      P>|t|      [95.0% Conf. Int.]
+--------------------------------------------------------------------------------------
+Intercept             10.3612     36.054      0.287      0.775       -62.760    83.482
+dm_planejad         -148.7613     60.999     -2.439      0.020      -272.474   -25.049
+dist_saude_publica   250.4964     55.054      4.550      0.000       138.841   362.152
+suites_1              70.3580     21.379      3.291      0.002        27.000   113.716
+dm_play               50.8581     18.686      2.722      0.010        12.962    88.754
+area                   2.2610      0.453      4.995      0.000         1.343     3.179
 ==============================================================================
-Omnibus:                        1.509   Durbin-Watson:                   2.012
-Prob(Omnibus):                  0.470   Jarque-Bera (JB):                1.444
-Skew:                          -0.355   Prob(JB):                        0.486
-Kurtosis:                       2.433   Cond. No.                     5.30e+04
+Omnibus:                        1.013   Durbin-Watson:                   1.893
+Prob(Omnibus):                  0.603   Jarque-Bera (JB):                1.055
+Skew:                          -0.317   Prob(JB):                        0.590
+Kurtosis:                       2.551   Cond. No.                         694.
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 5.3e+04. This might indicate that there are
-strong multicollinearity or other numerical problems.

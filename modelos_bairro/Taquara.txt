@@ -1,48 +1,47 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.793
-Model:                            OLS   Adj. R-squared:                  0.784
-Method:                 Least Squares   F-statistic:                     94.08
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):          3.56e-161
-Time:                        18:33:22   Log-Likelihood:                -2940.3
-No. Observations:                 538   AIC:                             5925.
-Df Residuals:                     516   BIC:                             6019.
+Dep. Variable:                  preco   R-squared:                       0.777
+Model:                            OLS   Adj. R-squared:                  0.768
+Method:                 Least Squares   F-statistic:                     85.44
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):          8.82e-153
+Time:                        11:54:42   Log-Likelihood:                -2960.7
+No. Observations:                 538   AIC:                             5965.
+Df Residuals:                     516   BIC:                             6060.
 Df Model:                          21                                         
 Covariance Type:            nonrobust                                         
 ======================================================================================
                          coef    std err          t      P>|t|      [95.0% Conf. Int.]
 --------------------------------------------------------------------------------------
-Intercept           -172.9960     54.792     -3.157      0.002      -280.638   -65.354
-dm_closet            -69.4759     19.424     -3.577      0.000      -107.636   -31.316
-dist_saude_privada   -48.4094     12.242     -3.954      0.000       -72.460   -24.359
-dm_andar_alto         92.2038     23.118      3.988      0.000        46.787   137.621
-dm_mezanino           62.1432     19.316      3.217      0.001        24.196   100.090
-dist_trem             18.1391      4.644      3.906      0.000         9.017    27.262
-preco_lag              0.5234      0.096      5.453      0.000         0.335     0.712
-area                   2.0980      0.139     15.072      0.000         1.825     2.371
-dm_original          851.4390     61.478     13.850      0.000       730.662   972.216
-dm_frente            -55.5386     18.388     -3.020      0.003       -91.664   -19.413
-dm_escritura         -20.1713      9.809     -2.056      0.040       -39.442    -0.900
-dm_dep_empregada      23.2594      9.457      2.459      0.014         4.680    41.838
-dm_lateral            62.1432     19.316      3.217      0.001        24.196   100.090
-dm_terraco           -71.3013     22.366     -3.188      0.002      -115.242   -27.361
-suites_2              59.3604     14.969      3.966      0.000        29.953    88.768
-suites_3              99.9054     27.479      3.636      0.000        45.920   153.891
-suites_1              48.2625      6.199      7.786      0.000        36.085    60.440
-garagem_4            450.5469     69.556      6.477      0.000       313.899   587.195
-dm_cobertura         -60.5551     18.511     -3.271      0.001       -96.921   -24.190
-dm_sauna              30.4707      7.076      4.306      0.000        16.570    44.371
-quartos_3             78.8146     13.034      6.047      0.000        53.208   104.422
-quartos_2             36.9024     11.280      3.272      0.001        14.743    59.062
-quartos_4            331.4871     39.375      8.419      0.000       254.132   408.842
+Intercept           -149.9184     75.915     -1.975      0.049      -299.060    -0.777
+dm_cobertura         -66.4820     19.216     -3.460      0.001      -104.233   -28.731
+suites_2              70.2114     15.465      4.540      0.000        39.830   100.593
+dm_closet            -68.8625     20.202     -3.409      0.001      -108.551   -29.174
+quartos_4            258.4356     38.493      6.714      0.000       182.814   334.057
+area                   2.3477      0.138     16.988      0.000         2.076     2.619
+garagem_4            437.3147     72.281      6.050      0.000       295.313   579.317
+dm_original          864.5717     64.010     13.507      0.000       738.819   990.325
+dist_saude_privada   -45.1016     14.221     -3.171      0.002       -73.040   -17.163
+dm_frente            -52.0098     19.103     -2.723      0.007       -89.538   -14.481
+dist_bombeiro        -11.2164      4.434     -2.530      0.012       -19.927    -2.506
+dm_andar_alto         87.1281     23.995      3.631      0.000        39.989   134.268
+suites_3             121.8651     28.470      4.280      0.000        65.933   177.797
+dm_dep_empregada      19.4883      9.802      1.988      0.047         0.231    38.745
+dm_terraco           -71.4559     23.200     -3.080      0.002      -117.034   -25.878
+dm_sauna              30.9772      7.344      4.218      0.000        16.550    45.404
+quartos_2            -18.4110      6.570     -2.802      0.005       -31.318    -5.504
+dm_lateral           127.8690     40.108      3.188      0.002        49.074   206.664
+dist_metro            19.6656      6.507      3.022      0.003         6.881    32.450
+suites_1              53.7889      6.402      8.402      0.000        41.212    66.366
+dm_escritura         -21.3228     10.187     -2.093      0.037       -41.336    -1.309
+preco_lag              0.4062      0.093      4.360      0.000         0.223     0.589
 ==============================================================================
-Omnibus:                      209.484   Durbin-Watson:                   2.063
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):             2156.837
-Skew:                           1.405   Prob(JB):                         0.00
-Kurtosis:                      12.398   Cond. No.                     1.16e+19
+Omnibus:                      186.521   Durbin-Watson:                   2.035
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1759.277
+Skew:                           1.238   Prob(JB):                         0.00
+Kurtosis:                      11.506   Cond. No.                     1.02e+04
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The smallest eigenvalue is 4.9e-31. This might indicate that there are
-strong multicollinearity problems or that the design matrix is singular.
+[2] The condition number is large, 1.02e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.

@@ -3,8 +3,8 @@
 Dep. Variable:                  preco   R-squared:                       0.824
 Model:                            OLS   Adj. R-squared:                  0.820
 Method:                 Least Squares   F-statistic:                     187.2
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):          1.55e-214
-Time:                        18:32:33   Log-Likelihood:                -4179.6
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):          1.55e-214
+Time:                        11:54:03   Log-Likelihood:                -4179.6
 No. Observations:                 615   AIC:                             8391.
 Df Residuals:                     599   BIC:                             8462.
 Df Model:                          15                                         

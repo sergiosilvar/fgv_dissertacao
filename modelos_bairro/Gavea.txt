@@ -1,44 +1,40 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.860
-Model:                            OLS   Adj. R-squared:                  0.843
-Method:                 Least Squares   F-statistic:                     53.31
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):           2.93e-54
-Time:                        18:32:06   Log-Likelihood:                -1155.5
-No. Observations:                 166   AIC:                             2347.
-Df Residuals:                     148   BIC:                             2403.
-Df Model:                          17                                         
+Dep. Variable:                  preco   R-squared:                       0.850
+Model:                            OLS   Adj. R-squared:                  0.836
+Method:                 Least Squares   F-statistic:                     60.90
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):           1.01e-54
+Time:                        11:53:41   Log-Likelihood:                -1161.2
+No. Observations:                 166   AIC:                             2352.
+Df Residuals:                     151   BIC:                             2399.
+Df Model:                          14                                         
 Covariance Type:            nonrobust                                         
-======================================================================================
-                         coef    std err          t      P>|t|      [95.0% Conf. Int.]
---------------------------------------------------------------------------------------
-Intercept           2.593e+04   7339.549      3.533      0.001      1.14e+04  4.04e+04
-dm_churrasqueira    -300.9701     95.570     -3.149      0.002      -489.829  -112.111
-suites_4            -839.8269    154.376     -5.440      0.000     -1144.893  -534.761
-dm_salao_jogos      -256.6008    111.883     -2.293      0.023      -477.695   -35.507
-area                  12.2770      0.577     21.263      0.000        11.136    13.418
-garagem_4           -839.8269    154.376     -5.440      0.000     -1144.893  -534.761
-dist_saude_privada -1537.7262    464.970     -3.307      0.001     -2456.564  -618.888
-dist_praia         -3732.3384   1156.212     -3.228      0.002     -6017.155 -1447.522
-garagem_2            347.3828     51.103      6.798      0.000       246.397   448.369
-dm_creche           -358.7830    139.266     -2.576      0.011      -633.989   -83.577
-dist_favela        -1538.5329    595.301     -2.584      0.011     -2714.920  -362.146
-dist_logradouro    -1088.4761    522.492     -2.083      0.039     -2120.985   -55.967
-dm_linear           1159.3955    295.010      3.930      0.000       576.420  1742.371
-dm_sauna             374.0895     73.667      5.078      0.000       228.514   519.665
-quartos_3            163.6249     46.789      3.497      0.001        71.164   256.086
-suites_3             413.8954    175.874      2.353      0.020        66.347   761.443
-dist_metro          1427.5577    493.657      2.892      0.004       452.031  2403.084
-dist_trem          -3195.9592    890.447     -3.589      0.000     -4955.591 -1436.328
-dm_andar_inteiro     561.7191    160.297      3.504      0.001       244.952   878.486
+====================================================================================
+                       coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------------
+Intercept          823.3919    255.823      3.219      0.002       317.938  1328.846
+dm_churrasqueira  -243.2566     93.584     -2.599      0.010      -428.160   -58.353
+suites_4         -1891.8176    308.711     -6.128      0.000     -2501.769 -1281.867
+dm_salao_jogos    -332.6789    112.185     -2.965      0.004      -554.334  -111.024
+area                12.2074      0.568     21.506      0.000        11.086    13.329
+garagem_2          324.8832     51.538      6.304      0.000       223.054   426.713
+dm_creche         -380.2289    141.340     -2.690      0.008      -659.487  -100.970
+suites_3           459.4082    176.847      2.598      0.010       109.994   808.822
+dist_logradouro    475.5764    222.623      2.136      0.034        35.719   915.434
+dm_linear         1220.8265    295.892      4.126      0.000       636.204  1805.449
+dm_sauna           279.7841     80.498      3.476      0.001       120.736   438.832
+quartos_3          117.4543     47.168      2.490      0.014        24.259   210.649
+dist_metro        -154.1880     71.867     -2.145      0.034      -296.183   -12.193
+dm_play            107.6890     52.888      2.036      0.043         3.193   212.185
+dm_andar_inteiro   584.5354    163.373      3.578      0.000       261.743   907.328
 ==============================================================================
-Omnibus:                       14.758   Durbin-Watson:                   1.802
-Prob(Omnibus):                  0.001   Jarque-Bera (JB):               18.453
-Skew:                           0.582   Prob(JB):                     9.84e-05
-Kurtosis:                       4.145   Cond. No.                     6.52e+18
+Omnibus:                       21.025   Durbin-Watson:                   1.907
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               30.886
+Skew:                           0.707   Prob(JB):                     1.96e-07
+Kurtosis:                       4.570   Cond. No.                     2.01e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The smallest eigenvalue is 7.15e-32. This might indicate that there are
-strong multicollinearity problems or that the design matrix is singular.
+[2] The condition number is large, 2.01e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

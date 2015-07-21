@@ -1,44 +1,41 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.661
-Model:                            OLS   Adj. R-squared:                  0.637
-Method:                 Least Squares   F-statistic:                     28.14
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):           8.92e-51
-Time:                        18:33:09   Log-Likelihood:                -1604.7
-No. Observations:                 279   AIC:                             3247.
-Df Residuals:                     260   BIC:                             3316.
-Df Model:                          18                                         
+Dep. Variable:                  preco   R-squared:                       0.635
+Model:                            OLS   Adj. R-squared:                  0.614
+Method:                 Least Squares   F-statistic:                     30.48
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):           6.05e-49
+Time:                        11:54:31   Log-Likelihood:                -1615.0
+No. Observations:                 279   AIC:                             3262.
+Df Residuals:                     263   BIC:                             3320.
+Df Model:                          15                                         
 Covariance Type:            nonrobust                                         
 ====================================================================================
                        coef    std err          t      P>|t|      [95.0% Conf. Int.]
 ------------------------------------------------------------------------------------
-Intercept         2437.0842    825.133      2.954      0.003       812.290  4061.878
-dm_dep_empregada   -41.3069     11.041     -3.741      0.000       -63.047   -19.567
-dm_churrasqueira    54.7689     17.637      3.105      0.002        20.040    89.498
-dm_sala_jantar     -39.8751     15.927     -2.504      0.013       -71.237    -8.513
-area                 2.3415      0.202     11.590      0.000         1.944     2.739
-garagem_4          383.2976     84.594      4.531      0.000       216.721   549.874
-suites_1            36.5960     11.462      3.193      0.002        14.025    59.167
-garagem_1           52.1165     11.094      4.698      0.000        30.272    73.961
-dist_delegacia     171.7128     71.080      2.416      0.016        31.747   311.679
-dist_bombeiro      -95.4170     21.919     -4.353      0.000      -138.579   -52.255
-garagem_3          196.1970     52.810      3.715      0.000        92.206   300.188
-dist_praia        -499.1066    200.441     -2.490      0.013      -893.801  -104.412
-dist_trem         -678.6942    215.673     -3.147      0.002     -1103.382  -254.007
-dm_sauna           -62.1902     22.015     -2.825      0.005      -105.541   -18.839
-quartos_3           90.6734     21.430      4.231      0.000        48.475   132.872
-quartos_2           59.0418     19.523      3.024      0.003        20.599    97.485
-dist_centro        201.9044     79.202      2.549      0.011        45.945   357.864
-dm_salao_festas     52.4533     16.496      3.180      0.002        19.970    84.936
-dm_andar_inteiro  -108.5935     52.606     -2.064      0.040      -212.181    -5.006
+Intercept          386.0321     35.238     10.955      0.000       316.648   455.417
+dm_churrasqueira    48.9028     18.055      2.708      0.007        13.351    84.454
+dm_sala_jantar     -40.8963     16.401     -2.494      0.013       -73.190    -8.602
+quartos_4         -105.5597     40.200     -2.626      0.009      -184.714   -26.406
+area                 2.7684      0.190     14.606      0.000         2.395     3.142
+garagem_4          388.5959     91.652      4.240      0.000       208.131   569.061
+dm_sol_manha      -175.5756     83.611     -2.100      0.037      -340.208   -10.943
+suites_1            42.5929     11.643      3.658      0.000        19.667    65.519
+dist_bombeiro      -97.0492     21.184     -4.581      0.000      -138.762   -55.337
+garagem_1           56.8377     10.771      5.277      0.000        35.629    78.047
+dm_dep_empregada   -40.8160     11.245     -3.630      0.000       -62.958   -18.674
+dm_sauna           -49.2746     22.551     -2.185      0.030       -93.678    -4.872
+garagem_3          194.3101     56.076      3.465      0.001        83.895   304.725
+dist_metro         -78.7301     15.003     -5.248      0.000      -108.272   -49.189
+dm_salao_festas     49.2701     16.963      2.905      0.004        15.869    82.671
+dm_andar_inteiro  -135.2390     52.057     -2.598      0.010      -237.740   -32.738
 ==============================================================================
-Omnibus:                      122.571   Durbin-Watson:                   2.044
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              834.202
-Skew:                           1.631   Prob(JB):                    7.17e-182
-Kurtosis:                      10.817   Cond. No.                     1.72e+04
+Omnibus:                      104.275   Durbin-Watson:                   1.973
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              544.247
+Skew:                           1.434   Prob(JB):                    6.58e-119
+Kurtosis:                       9.213   Cond. No.                     1.79e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 1.72e+04. This might indicate that there are
+[2] The condition number is large, 1.79e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.

@@ -1,39 +1,39 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.836
-Model:                            OLS   Adj. R-squared:                  0.831
-Method:                 Least Squares   F-statistic:                     149.7
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):          9.84e-141
-Time:                        18:32:51   Log-Likelihood:                -2220.7
-No. Observations:                 395   AIC:                             4469.
-Df Residuals:                     381   BIC:                             4525.
+Dep. Variable:                  preco   R-squared:                       0.833
+Model:                            OLS   Adj. R-squared:                  0.827
+Method:                 Least Squares   F-statistic:                     146.1
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):          4.70e-139
+Time:                        11:54:16   Log-Likelihood:                -2224.8
+No. Observations:                 395   AIC:                             4478.
+Df Residuals:                     381   BIC:                             4533.
 Df Model:                          13                                         
 Covariance Type:            nonrobust                                         
 ==================================================================================
                      coef    std err          t      P>|t|      [95.0% Conf. Int.]
 ----------------------------------------------------------------------------------
-Intercept         66.0139     18.313      3.605      0.000        30.007   102.021
-suites_4        1146.9581     77.104     14.875      0.000       995.355  1298.561
-suites_2          77.2340     23.330      3.311      0.001        31.363   123.105
-dm_closet        -63.3921     20.942     -3.027      0.003      -104.569   -22.215
-area               2.8289      0.129     21.941      0.000         2.575     3.082
-dm_porcelanato    78.8660     11.896      6.630      0.000        55.476   102.256
-dm_sol_manha      95.6855     34.571      2.768      0.006        27.712   163.659
-suites_1          51.1695      7.807      6.554      0.000        35.820    66.519
-garagem_1         60.7037     16.374      3.707      0.000        28.509    92.898
-garagem_2         90.5889     19.064      4.752      0.000        53.106   128.072
-dm_creche         45.3710     15.244      2.976      0.003        15.398    75.344
-quartos_4        126.2984     28.548      4.424      0.000        70.168   182.429
-dm_escritura     -41.0996     11.291     -3.640      0.000       -63.299   -18.900
-suites_3        -172.3813     70.268     -2.453      0.015      -310.543   -34.220
+Intercept        119.8823     10.389     11.539      0.000        99.455   140.309
+suites_4        1084.9678     76.400     14.201      0.000       934.749  1235.187
+suites_2          73.0591     23.778      3.073      0.002        26.307   119.811
+dm_closet        -62.2213     21.153     -2.941      0.003      -103.812   -20.630
+area               2.7551      0.131     20.978      0.000         2.497     3.013
+dm_porcelanato    74.9598     12.077      6.207      0.000        51.213    98.706
+dm_sol_manha      93.6400     34.949      2.679      0.008        24.923   162.357
+suites_1          52.3828      7.904      6.627      0.000        36.841    67.925
+garagem_2         36.5719     11.492      3.182      0.002        13.976    59.168
+dm_creche         40.2589     15.673      2.569      0.011         9.442    71.076
+quartos_4        135.5000     28.914      4.686      0.000        78.648   192.352
+dm_varanda        18.2005      7.579      2.402      0.017         3.299    33.102
+dm_escritura     -41.4518     11.483     -3.610      0.000       -64.029   -18.874
+suites_3        -157.4742     71.055     -2.216      0.027      -297.184   -17.764
 ==============================================================================
-Omnibus:                      321.672   Durbin-Watson:                   2.038
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):            15696.803
-Skew:                           2.976   Prob(JB):                         0.00
-Kurtosis:                      33.304   Cond. No.                     2.08e+03
+Omnibus:                      305.176   Durbin-Watson:                   2.050
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            13173.165
+Skew:                           2.777   Prob(JB):                         0.00
+Kurtosis:                      30.741   Cond. No.                     2.04e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 2.08e+03. This might indicate that there are
+[2] The condition number is large, 2.04e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.

@@ -2,36 +2,34 @@
 ==============================================================================
 Dep. Variable:                  preco   R-squared:                       0.955
 Model:                            OLS   Adj. R-squared:                  0.951
-Method:                 Least Squares   F-statistic:                     248.2
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):           2.99e-59
-Time:                        18:33:17   Log-Likelihood:                -604.00
+Method:                 Least Squares   F-statistic:                     248.0
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):           3.12e-59
+Time:                        11:54:38   Log-Likelihood:                -604.04
 No. Observations:                 102   AIC:                             1226.
 Df Residuals:                      93   BIC:                             1250.
 Df Model:                           8                                         
 Covariance Type:            nonrobust                                         
-====================================================================================
-                       coef    std err          t      P>|t|      [95.0% Conf. Int.]
-------------------------------------------------------------------------------------
-Intercept          356.5113     64.052      5.566      0.000       229.317   483.705
-area                 3.1091      0.551      5.643      0.000         2.015     4.203
-dm_cobertura      1444.7123     55.155     26.194      0.000      1335.186  1554.239
-dist_bombeiro      -74.1389     27.204     -2.725      0.008      -128.161   -20.117
-dm_linear         2051.6450     81.442     25.192      0.000      1889.918  2213.372
-garagem_1           76.6645     20.900      3.668      0.000        35.162   118.167
-dm_duplex         -858.0522     45.724    -18.766      0.000      -948.851  -767.253
-garagem_2         -858.0522     45.724    -18.766      0.000      -948.851  -767.253
-dm_terraco       -1464.9849     78.555    -18.649      0.000     -1620.979 -1308.991
-quartos_4          344.9642     74.717      4.617      0.000       196.591   493.338
-dist_trem         -112.9387     21.410     -5.275      0.000      -155.455   -70.423
-dm_andar_inteiro  -858.0522     45.724    -18.766      0.000      -948.851  -767.253
+=================================================================================
+                    coef    std err          t      P>|t|      [95.0% Conf. Int.]
+---------------------------------------------------------------------------------
+Intercept       354.9109     63.913      5.553      0.000       227.992   481.830
+area              3.2151      0.544      5.914      0.000         2.136     4.295
+dm_cobertura   1880.8598     59.739     31.484      0.000      1762.230  1999.490
+dist_bombeiro   -71.0091     27.094     -2.621      0.010      -124.813   -17.206
+dm_linear      1614.1000     85.634     18.849      0.000      1444.048  1784.152
+garagem_1        74.1643     21.009      3.530      0.001        32.445   115.884
+garagem_2     -2171.1454    112.888    -19.233      0.000     -2395.318 -1946.973
+dist_metro     -111.4404     21.168     -5.264      0.000      -153.477   -69.404
+dm_terraco    -1904.3856     92.208    -20.653      0.000     -2087.493 -1721.278
+quartos_4       343.0089     74.692      4.592      0.000       194.686   491.332
 ==============================================================================
-Omnibus:                       30.203   Durbin-Watson:                   1.893
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              411.429
-Skew:                          -0.085   Prob(JB):                     4.56e-90
-Kurtosis:                      12.838   Cond. No.                     3.65e+19
+Omnibus:                       32.014   Durbin-Watson:                   1.887
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              506.876
+Skew:                          -0.073   Prob(JB):                    8.58e-111
+Kurtosis:                      13.920   Cond. No.                     5.40e+18
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The smallest eigenvalue is 4.77e-34. This might indicate that there are
+[2] The smallest eigenvalue is 2.18e-32. This might indicate that there are
 strong multicollinearity problems or that the design matrix is singular.

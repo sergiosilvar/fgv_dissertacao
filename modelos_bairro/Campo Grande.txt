@@ -1,42 +1,42 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.688
-Model:                            OLS   Adj. R-squared:                  0.667
-Method:                 Least Squares   F-statistic:                     32.23
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):           3.84e-50
-Time:                        18:31:34   Log-Likelihood:                -1607.5
-No. Observations:                 251   AIC:                             3249.
-Df Residuals:                     234   BIC:                             3309.
+Dep. Variable:                  preco   R-squared:                       0.692
+Model:                            OLS   Adj. R-squared:                  0.671
+Method:                 Least Squares   F-statistic:                     32.93
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):           7.12e-51
+Time:                        11:53:17   Log-Likelihood:                -1605.7
+No. Observations:                 251   AIC:                             3245.
+Df Residuals:                     234   BIC:                             3305.
 Df Model:                          16                                         
 Covariance Type:            nonrobust                                         
 ====================================================================================
                        coef    std err          t      P>|t|      [95.0% Conf. Int.]
 ------------------------------------------------------------------------------------
-Intercept         -369.2125     96.538     -3.825      0.000      -559.408  -179.017
-dm_sala_jantar    -116.8597     44.243     -2.641      0.009      -204.026   -29.693
-area                 3.2292      0.380      8.501      0.000         2.481     3.978
-dm_sol_manha      -440.4768    158.935     -2.771      0.006      -753.603  -127.351
-suites_1            64.1665     22.989      2.791      0.006        18.875   109.458
-dm_copa           -241.7915     49.082     -4.926      0.000      -338.491  -145.092
-suites_4           471.1190    160.705      2.932      0.004       154.506   787.732
-dist_delegacia      39.8208     14.328      2.779      0.006        11.592    68.049
-dm_creche          258.1737     65.154      3.962      0.000       129.810   386.538
-dm_blindex         -97.7712     37.882     -2.581      0.010      -172.406   -23.137
-dm_dep_empregada   445.6941     54.084      8.241      0.000       339.141   552.247
-dm_duplex         -226.1122     94.218     -2.400      0.017      -411.736   -40.488
-quartos_2          -56.4798     23.507     -2.403      0.017      -102.793   -10.167
-quartos_4          169.7514     48.720      3.484      0.001        73.765   265.737
-dm_varanda          72.1608     26.377      2.736      0.007        20.193   124.129
-dist_trem          -42.0270     20.023     -2.099      0.037       -81.476    -2.578
-dist_lagoa          31.4273      6.792      4.627      0.000        18.046    44.808
+Intercept         -840.9595    357.118     -2.355      0.019     -1544.536  -137.383
+dm_sala_jantar    -111.1134     43.834     -2.535      0.012      -197.472   -24.754
+preco_lag            1.0452      0.308      3.391      0.001         0.438     1.653
+area                 3.1984      0.376      8.515      0.000         2.458     3.938
+dm_sol_manha      -440.5339    157.697     -2.794      0.006      -751.221  -129.847
+suites_1            57.9733     23.071      2.513      0.013        12.519   103.427
+dm_copa           -240.4951     48.559     -4.953      0.000      -336.164  -144.826
+suites_4           583.3686    159.974      3.647      0.000       268.194   898.543
+dm_creche          264.5067     64.377      4.109      0.000       137.674   391.339
+dm_blindex         -87.5539     37.705     -2.322      0.021      -161.838   -13.270
+dm_dep_empregada   430.7445     54.135      7.957      0.000       324.090   537.399
+dm_duplex         -212.1593     93.551     -2.268      0.024      -396.468   -27.850
+quartos_2          -60.9170     23.362     -2.608      0.010      -106.943   -14.891
+dist_centro         42.0700     13.018      3.232      0.001        16.423    67.717
+dist_metro         -47.3343      9.741     -4.860      0.000       -66.525   -28.144
+dm_varanda          76.6076     25.854      2.963      0.003        25.672   127.543
+quartos_4          160.3484     48.479      3.308      0.001        64.837   255.860
 ==============================================================================
-Omnibus:                      160.682   Durbin-Watson:                   2.110
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1974.222
-Skew:                           2.325   Prob(JB):                         0.00
-Kurtosis:                      15.928   Cond. No.                     1.46e+03
+Omnibus:                      154.521   Durbin-Watson:                   2.090
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1985.163
+Skew:                           2.182   Prob(JB):                         0.00
+Kurtosis:                      16.068   Cond. No.                     1.22e+04
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 1.46e+03. This might indicate that there are
+[2] The condition number is large, 1.22e+04. This might indicate that there are
 strong multicollinearity or other numerical problems.

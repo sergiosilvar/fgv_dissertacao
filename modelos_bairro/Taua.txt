@@ -1,34 +1,41 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.839
-Model:                            OLS   Adj. R-squared:                  0.806
-Method:                 Least Squares   F-statistic:                     25.09
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):           9.06e-16
-Time:                        18:33:23   Log-Likelihood:                -317.24
-No. Observations:                  59   AIC:                             656.5
-Df Residuals:                      48   BIC:                             679.3
-Df Model:                          10                                         
+Dep. Variable:                  preco   R-squared:                       0.877
+Model:                            OLS   Adj. R-squared:                  0.834
+Method:                 Least Squares   F-statistic:                     20.38
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):           8.67e-15
+Time:                        11:54:42   Log-Likelihood:                -309.45
+No. Observations:                  59   AIC:                             650.9
+Df Residuals:                      43   BIC:                             684.1
+Df Model:                          15                                         
 Covariance Type:            nonrobust                                         
 ======================================================================================
                          coef    std err          t      P>|t|      [95.0% Conf. Int.]
 --------------------------------------------------------------------------------------
-Intercept            124.0394     38.431      3.228      0.002        46.769   201.309
-dm_churrasqueira     -72.7167     23.634     -3.077      0.003      -120.237   -25.197
-area                   2.1004      0.226      9.278      0.000         1.645     2.556
-dist_saude_publica   134.8141     45.955      2.934      0.005        42.414   227.214
-dist_saude_privada  -143.1433     69.316     -2.065      0.044      -282.513    -3.774
-dm_copa             -130.1442     47.799     -2.723      0.009      -226.250   -34.038
-dm_frente             90.0586     34.248      2.630      0.011        21.199   158.919
-dm_indevassavel     -100.5484     41.773     -2.407      0.020      -184.538   -16.559
-quartos_3            167.2960     36.318      4.606      0.000        94.274   240.318
-quartos_2             56.8880     24.302      2.341      0.023         8.025   105.751
-dm_varanda            71.4889     23.813      3.002      0.004        23.610   119.368
+Intercept            154.0452     31.353      4.913      0.000        90.816   217.275
+dm_churrasqueira    -125.1433     26.860     -4.659      0.000      -179.312   -70.974
+area                   2.7556      0.293      9.389      0.000         2.164     3.347
+dm_armario           -62.2151     27.347     -2.275      0.028      -117.365    -7.065
+dist_saude_publica   132.5558     44.005      3.012      0.004        43.810   221.301
+dist_saude_privada  -227.6740     74.392     -3.060      0.004      -377.699   -77.649
+dm_copa             -206.8398     50.227     -4.118      0.000      -308.132  -105.548
+dm_frente            210.6030     46.593      4.520      0.000       116.639   304.567
+dm_play              112.9300     36.696      3.077      0.004        38.926   186.934
+dm_indevassavel     -208.8601     52.600     -3.971      0.000      -314.939  -102.781
+dm_granito           251.9996     85.885      2.934      0.005        78.797   425.202
+dm_sauna             277.1181     93.336      2.969      0.005        88.889   465.347
+quartos_3             75.1458     30.803      2.440      0.019        13.025   137.267
+dm_seguranca        -105.4919     43.980     -2.399      0.021      -194.186   -16.798
+dm_varanda            89.1981     23.678      3.767      0.000        41.447   136.949
+quartos_4           -217.0311     78.140     -2.777      0.008      -374.615   -59.447
 ==============================================================================
-Omnibus:                        0.076   Durbin-Watson:                   1.807
-Prob(Omnibus):                  0.963   Jarque-Bera (JB):                0.267
-Skew:                           0.025   Prob(JB):                        0.875
-Kurtosis:                       2.674   Cond. No.                         919.
+Omnibus:                        1.626   Durbin-Watson:                   1.827
+Prob(Omnibus):                  0.443   Jarque-Bera (JB):                0.905
+Skew:                           0.064   Prob(JB):                        0.636
+Kurtosis:                       3.593   Cond. No.                     1.72e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.72e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

@@ -1,44 +1,44 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.737
-Model:                            OLS   Adj. R-squared:                  0.727
-Method:                 Least Squares   F-statistic:                     74.11
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):          3.08e-125
-Time:                        18:32:27   Log-Likelihood:                -3662.3
-No. Observations:                 494   AIC:                             7363.
-Df Residuals:                     475   BIC:                             7442.
+Dep. Variable:                  preco   R-squared:                       0.734
+Model:                            OLS   Adj. R-squared:                  0.724
+Method:                 Least Squares   F-statistic:                     72.73
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):          7.81e-124
+Time:                        11:54:00   Log-Likelihood:                -3665.7
+No. Observations:                 494   AIC:                             7369.
+Df Residuals:                     475   BIC:                             7449.
 Df Model:                          18                                         
 Covariance Type:            nonrobust                                         
 ====================================================================================
                        coef    std err          t      P>|t|      [95.0% Conf. Int.]
 ------------------------------------------------------------------------------------
-Intercept        -5376.8404    788.810     -6.816      0.000     -6926.829 -3826.852
-suites_4           944.5150    192.400      4.909      0.000       566.455  1322.575
-dist_centro       1185.9825    191.719      6.186      0.000       809.261  1562.704
-quartos_4          305.6256     73.862      4.138      0.000       160.490   450.761
-dm_closet          120.5539     59.633      2.022      0.044         3.377   237.731
-area                 8.5357      0.542     15.746      0.000         7.471     9.601
-suites_1           183.1100     43.491      4.210      0.000        97.651   268.569
-dm_copa            112.8093     42.802      2.636      0.009        28.705   196.914
-garagem_1          243.2362     75.059      3.241      0.001        95.748   390.725
-garagem_2          571.2566     81.776      6.986      0.000       410.570   731.943
-garagem_3          412.0358    106.104      3.883      0.000       203.544   620.528
-dist_favela       -349.8858    121.755     -2.874      0.004      -589.130  -110.641
-dm_duplex         -345.6387    152.796     -2.262      0.024      -645.879   -45.398
-dist_delegacia     546.0753     90.292      6.048      0.000       368.654   723.497
-quartos_3          106.3437     51.536      2.063      0.040         5.077   207.610
-suites_3           819.1605    127.638      6.418      0.000       568.356  1069.965
-dm_seguranca      -200.8365     80.789     -2.486      0.013      -359.584   -42.089
-dist_trem         -513.3029    128.776     -3.986      0.000      -766.343  -260.262
-dm_andar_inteiro  -273.6900     93.936     -2.914      0.004      -458.271   -89.109
+Intercept        -3038.0537    681.519     -4.458      0.000     -4377.218 -1698.889
+suites_4           953.1287    193.668      4.921      0.000       572.577  1333.680
+dist_centro        456.8942     80.082      5.705      0.000       299.536   614.252
+quartos_4          328.5082     73.990      4.440      0.000       183.120   473.896
+suites_3           802.2037    128.502      6.243      0.000       549.701  1054.707
+area                 8.5895      0.545     15.761      0.000         7.519     9.660
+suites_1           186.2885     43.450      4.287      0.000       100.911   271.666
+dm_copa            121.0300     43.194      2.802      0.005        36.155   205.905
+garagem_1          249.0161     75.734      3.288      0.001       100.200   397.832
+garagem_2          583.5291     82.553      7.069      0.000       421.315   745.743
+dist_bombeiro      250.2259    107.924      2.319      0.021        38.159   462.293
+dm_andar_inteiro  -312.3699     94.211     -3.316      0.001      -497.491  -127.249
+dist_favela       -448.9568    128.308     -3.499      0.001      -701.077  -196.836
+dm_duplex         -357.7758    154.936     -2.309      0.021      -662.221   -53.331
+garagem_3          441.2292    107.189      4.116      0.000       230.606   651.852
+quartos_3          112.0834     51.887      2.160      0.031        10.128   214.039
+dm_seguranca      -178.3273     80.831     -2.206      0.028      -337.158   -19.496
+dist_metro         257.6120     70.582      3.650      0.000       118.921   396.303
+dist_lagoa        -738.3621    249.708     -2.957      0.003     -1229.031  -247.693
 ==============================================================================
-Omnibus:                       52.306   Durbin-Watson:                   2.022
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              131.257
-Skew:                           0.541   Prob(JB):                     3.15e-29
-Kurtosis:                       5.282   Cond. No.                     6.61e+03
+Omnibus:                       56.473   Durbin-Watson:                   1.973
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              156.030
+Skew:                           0.553   Prob(JB):                     1.31e-34
+Kurtosis:                       5.522   Cond. No.                     5.66e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 6.61e+03. This might indicate that there are
+[2] The condition number is large, 5.66e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.

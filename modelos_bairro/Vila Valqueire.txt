@@ -1,47 +1,41 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.851
-Model:                            OLS   Adj. R-squared:                  0.829
-Method:                 Least Squares   F-statistic:                     39.19
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):           4.75e-49
-Time:                        18:33:35   Log-Likelihood:                -964.63
-No. Observations:                 166   AIC:                             1973.
-Df Residuals:                     144   BIC:                             2042.
-Df Model:                          21                                         
+Dep. Variable:                  preco   R-squared:                       0.756
+Model:                            OLS   Adj. R-squared:                  0.732
+Method:                 Least Squares   F-statistic:                     31.04
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):           1.94e-38
+Time:                        11:54:55   Log-Likelihood:                -1005.5
+No. Observations:                 166   AIC:                             2043.
+Df Residuals:                     150   BIC:                             2093.
+Df Model:                          15                                         
 Covariance Type:            nonrobust                                         
 ====================================================================================
                        coef    std err          t      P>|t|      [95.0% Conf. Int.]
 ------------------------------------------------------------------------------------
-Intercept        -9436.1821   4712.562     -2.002      0.047     -1.88e+04  -121.449
-dm_churrasqueira   -38.4215     17.800     -2.159      0.033       -73.604    -3.239
-dist_centro      -2344.9077    471.300     -4.975      0.000     -3276.468 -1413.348
-suites_2            75.9668     35.800      2.122      0.036         5.205   146.729
-preco_lag           -1.9353      0.355     -5.449      0.000        -2.637    -1.233
-area                 2.9072      0.328      8.862      0.000         2.259     3.556
-dm_sol_manha       142.0610     52.636      2.699      0.008        38.023   246.099
-suites_1            50.8661     16.017      3.176      0.002        19.207    82.525
-dm_frente          114.2893     33.645      3.397      0.001        47.788   180.790
-dist_bombeiro    -1395.0493    292.185     -4.775      0.000     -1972.574  -817.524
-dm_esquina        -236.1432     70.474     -3.351      0.001      -375.440   -96.846
-dist_praia        6034.2892    678.427      8.895      0.000      4693.327  7375.252
-dm_duplex          119.8413     53.866      2.225      0.028        13.372   226.311
-garagem_3          363.0344     56.946      6.375      0.000       250.477   475.592
-dm_lateral        -325.8750    104.747     -3.111      0.002      -532.915  -118.835
-dm_cobertura      -173.1608     40.426     -4.283      0.000      -253.066   -93.255
-quartos_3           93.0053     18.415      5.050      0.000        56.606   129.404
-dm_seguranca      -132.4337     43.679     -3.032      0.003      -218.769   -46.098
-dist_metro       -2948.9517    403.330     -7.312      0.000     -3746.163 -2151.740
-dm_varanda         -42.0049     15.196     -2.764      0.006       -72.042   -11.968
-dm_salao_festas     55.3478     16.819      3.291      0.001        22.105    88.591
-quartos_4          364.1784     49.041      7.426      0.000       267.245   461.112
+Intercept          430.4515    150.290      2.864      0.005       133.493   727.410
+dm_churrasqueira   -47.9491     22.159     -2.164      0.032       -91.732    -4.166
+dm_cobertura      -214.0260     43.367     -4.935      0.000      -299.714  -128.338
+suites_2            85.4443     43.234      1.976      0.050         0.018   170.871
+area                 3.9927      0.379     10.544      0.000         3.244     4.741
+suites_1            46.5220     20.029      2.323      0.022         6.946    86.098
+dm_copa            -90.9068     30.220     -3.008      0.003      -150.619   -31.194
+dm_frente          130.1662     40.429      3.220      0.002        50.283   210.049
+dm_creche         -226.4656     60.580     -3.738      0.000      -346.166  -106.765
+dist_favela        137.5617     45.826      3.002      0.003        47.014   228.109
+dm_granito         147.3384     56.509      2.607      0.010        35.681   258.995
+quartos_2          -59.9769     21.743     -2.758      0.007      -102.939   -17.015
+dm_lateral        -403.0073    128.944     -3.125      0.002      -657.789  -148.226
+dist_metro         -69.7094     28.782     -2.422      0.017      -126.580   -12.839
+dm_salao_festas     54.8261     20.752      2.642      0.009        13.822    95.830
+quartos_4          261.4013     56.309      4.642      0.000       150.141   372.662
 ==============================================================================
-Omnibus:                       17.947   Durbin-Watson:                   2.094
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):               51.923
-Skew:                           0.322   Prob(JB):                     5.31e-12
-Kurtosis:                       5.663   Cond. No.                     3.48e+05
+Omnibus:                       51.942   Durbin-Watson:                   2.099
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              581.472
+Skew:                           0.716   Prob(JB):                    5.43e-127
+Kurtosis:                      12.056   Cond. No.                     1.85e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 3.48e+05. This might indicate that there are
+[2] The condition number is large, 1.85e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.

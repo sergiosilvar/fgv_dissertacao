@@ -3,8 +3,8 @@
 Dep. Variable:                  preco   R-squared:                       0.776
 Model:                            OLS   Adj. R-squared:                  0.774
 Method:                 Least Squares   F-statistic:                     447.4
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):               0.00
-Time:                        18:33:26   Log-Likelihood:                -16092.
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):               0.00
+Time:                        11:54:46   Log-Likelihood:                -16092.
 No. Observations:                2478   AIC:                         3.222e+04
 Df Residuals:                    2458   BIC:                         3.234e+04
 Df Model:                          19                                         
@@ -12,7 +12,7 @@ Covariance Type:            nonrobust
 ====================================================================================
                        coef    std err          t      P>|t|      [95.0% Conf. Int.]
 ------------------------------------------------------------------------------------
-Intercept        -1.334e-05   2.18e-06     -6.118      0.000     -1.76e-05 -9.07e-06
+Intercept         -150.3876     24.581     -6.118      0.000      -198.590  -102.186
 dm_churrasqueira   -23.8207     11.772     -2.023      0.043       -46.906    -0.736
 suites_4          3390.3091    161.461     20.998      0.000      3073.695  3706.923
 suites_2           202.6422     17.077     11.866      0.000       169.155   236.129
@@ -27,7 +27,6 @@ garagem_3          276.3656     25.482     10.846      0.000       226.398   326
 dist_favela         85.9926     14.713      5.845      0.000        57.142   114.843
 dm_dep_empregada   -18.6246      6.746     -2.761      0.006       -31.853    -5.396
 dm_piscina          69.3464     12.880      5.384      0.000        44.089    94.604
-se_renda            -0.0448      0.007     -6.118      0.000        -0.059    -0.030
 quartos_3           21.1467      8.215      2.574      0.010         5.037    37.256
 quartos_4          104.5117     15.405      6.784      0.000        74.303   134.721
 dist_metro         -36.1353      4.988     -7.244      0.000       -45.917   -26.354
@@ -37,10 +36,10 @@ suites_3           116.5334     53.333      2.185      0.029        11.950   221
 Omnibus:                     1222.766   Durbin-Watson:                   2.024
 Prob(Omnibus):                  0.000   Jarque-Bera (JB):            44819.939
 Skew:                           1.672   Prob(JB):                         0.00
-Kurtosis:                      23.565   Cond. No.                     8.82e+17
+Kurtosis:                      23.565   Cond. No.                     4.03e+04
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The smallest eigenvalue is 3.8e-26. This might indicate that there are
-strong multicollinearity problems or that the design matrix is singular.
+[2] The condition number is large, 4.03e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.

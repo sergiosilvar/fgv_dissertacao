@@ -1,50 +1,40 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.868
-Model:                            OLS   Adj. R-squared:                  0.861
-Method:                 Least Squares   F-statistic:                     112.0
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):          4.98e-163
-Time:                        18:32:47   Log-Likelihood:                -2423.6
-No. Observations:                 433   AIC:                             4897.
-Df Residuals:                     408   BIC:                             4999.
-Df Model:                          24                                         
+Dep. Variable:                  preco   R-squared:                       0.846
+Model:                            OLS   Adj. R-squared:                  0.841
+Method:                 Least Squares   F-statistic:                     164.2
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):          5.88e-160
+Time:                        11:54:13   Log-Likelihood:                -2457.2
+No. Observations:                 433   AIC:                             4944.
+Df Residuals:                     418   BIC:                             5005.
+Df Model:                          14                                         
 Covariance Type:            nonrobust                                         
-==================================================================================
-                     coef    std err          t      P>|t|      [95.0% Conf. Int.]
-----------------------------------------------------------------------------------
-Intercept       4141.9246   1176.768      3.520      0.000      1828.639  6455.210
-dm_closet        225.2744     38.804      5.805      0.000       148.994   301.555
-dm_linear       -142.3820     57.765     -2.465      0.014      -255.936   -28.828
-preco_lag          0.4239      0.131      3.242      0.001         0.167     0.681
-area               1.9383      0.137     14.159      0.000         1.669     2.207
-dm_frente         36.5595     18.363      1.991      0.047         0.461    72.658
-dist_delegacia   122.0889     36.235      3.369      0.001        50.858   193.320
-dist_favela      118.0986     28.814      4.099      0.000        61.455   174.742
-dist_centro      186.2469     43.255      4.306      0.000       101.216   271.278
-dm_escritura     -41.4942     13.511     -3.071      0.002       -68.054   -14.934
-dist_bombeiro   -182.7455     47.017     -3.887      0.000      -275.172   -90.319
-dist_praia     -1272.6648    321.452     -3.959      0.000     -1904.574  -640.756
-dm_varanda        18.4900      8.266      2.237      0.026         2.241    34.739
-dm_terraco        65.2683     23.090      2.827      0.005        19.878   110.658
-suites_1          69.3724      9.372      7.402      0.000        50.948    87.796
-garagem_4        758.3150     46.512     16.304      0.000       666.882   849.748
-dm_copa          -21.5457     10.175     -2.118      0.035       -41.547    -1.544
-garagem_1         49.3189      8.336      5.917      0.000        32.933    65.705
-garagem_2        135.2076     15.735      8.593      0.000       104.277   166.138
-garagem_3        473.8484     63.946      7.410      0.000       348.143   599.554
-dm_sauna          51.0471     12.667      4.030      0.000        26.146    75.948
-quartos_3         93.9035     16.302      5.760      0.000        61.857   125.950
-quartos_2         45.9084     13.994      3.280      0.001        18.398    73.419
-dist_metro      1262.6380    320.794      3.936      0.000       632.023  1893.253
-quartos_4         82.9889     31.228      2.658      0.008        21.601   144.377
+================================================================================
+                   coef    std err          t      P>|t|      [95.0% Conf. Int.]
+--------------------------------------------------------------------------------
+Intercept     -121.0973     32.538     -3.722      0.000      -185.056   -57.139
+dm_closet      181.9361     37.766      4.817      0.000       107.702   256.170
+area             2.3090      0.130     17.754      0.000         2.053     2.565
+garagem_4      699.4867     46.926     14.906      0.000       607.246   791.728
+suites_1        68.8494      9.916      6.943      0.000        49.358    88.341
+garagem_1       47.9351      8.651      5.541      0.000        30.930    64.940
+garagem_2      117.3121     16.355      7.173      0.000        85.164   149.460
+garagem_3      323.9968     46.788      6.925      0.000       232.027   415.966
+dist_favela     71.3542     16.398      4.351      0.000        39.122   103.587
+dm_terraco      77.9360     24.280      3.210      0.001        30.211   125.661
+dm_sauna        60.6799     13.190      4.600      0.000        34.753    86.607
+quartos_2      -20.7578      7.987     -2.599      0.010       -36.457    -5.058
+dm_varanda      18.2875      8.678      2.107      0.036         1.230    35.345
+dm_escritura   -38.8601     14.105     -2.755      0.006       -66.585   -11.135
+preco_lag        0.6219      0.067      9.339      0.000         0.491     0.753
 ==============================================================================
-Omnibus:                       15.463   Durbin-Watson:                   1.933
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):               27.657
-Skew:                           0.207   Prob(JB):                     9.87e-07
-Kurtosis:                       4.167   Cond. No.                     1.71e+05
+Omnibus:                       24.420   Durbin-Watson:                   1.883
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               74.722
+Skew:                           0.085   Prob(JB):                     5.95e-17
+Kurtosis:                       5.028   Cond. No.                     6.59e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 1.71e+05. This might indicate that there are
+[2] The condition number is large, 6.59e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.

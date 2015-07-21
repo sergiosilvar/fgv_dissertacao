@@ -1,50 +1,48 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.818
-Model:                            OLS   Adj. R-squared:                  0.816
-Method:                 Least Squares   F-statistic:                     349.0
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):               0.00
-Time:                        18:31:24   Log-Likelihood:                -12885.
-No. Observations:                1806   AIC:                         2.582e+04
-Df Residuals:                    1782   BIC:                         2.595e+04
-Df Model:                          23                                         
+Dep. Variable:                  preco   R-squared:                       0.817
+Model:                            OLS   Adj. R-squared:                  0.815
+Method:                 Least Squares   F-statistic:                     362.7
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):               0.00
+Time:                        11:53:07   Log-Likelihood:                -12890.
+No. Observations:                1806   AIC:                         2.583e+04
+Df Residuals:                    1783   BIC:                         2.595e+04
+Df Model:                          22                                         
 Covariance Type:            nonrobust                                         
 ======================================================================================
                          coef    std err          t      P>|t|      [95.0% Conf. Int.]
 --------------------------------------------------------------------------------------
-Intercept          -2.228e-05   5.91e-06     -3.772      0.000     -3.39e-05 -1.07e-05
-dist_saude_privada    84.1017     33.403      2.518      0.012        18.589   149.614
-dist_lagoa           167.8100     25.807      6.503      0.000       117.196   218.425
-preco_lag              0.1982      0.028      6.996      0.000         0.143     0.254
-area                   7.6641      0.198     38.705      0.000         7.276     8.052
-dm_elevador          -69.1757     21.661     -3.194      0.001      -111.660   -26.692
-dm_frente            121.7274     29.855      4.077      0.000        63.172   180.283
-dist_delegacia       -61.0618     14.561     -4.194      0.000       -89.620   -32.504
-dist_favela           36.0574      8.794      4.100      0.000        18.810    53.305
-dist_logradouro      183.8896     28.097      6.545      0.000       128.784   238.996
-dist_centro           47.6055     16.297      2.921      0.004        15.642    79.569
-dm_banheira           50.2987     24.343      2.066      0.039         2.555    98.043
-dm_creche            -75.9800     31.246     -2.432      0.015      -137.263   -14.697
-dm_duplex            161.6194     68.266      2.367      0.018        27.729   295.510
-se_renda              -0.1523      0.040     -3.772      0.000        -0.231    -0.073
-suites_4             284.0515     50.229      5.655      0.000       185.538   382.565
-suites_2             104.9956     32.181      3.263      0.001        41.880   168.111
-suites_3              99.1844     37.640      2.635      0.008        25.362   173.007
-suites_1              77.7511     24.712      3.146      0.002        29.283   126.220
-garagem_4            594.7200     60.170      9.884      0.000       476.708   712.732
-dm_cobertura        -249.9021     56.715     -4.406      0.000      -361.138  -138.666
-garagem_2             91.9413     19.513      4.712      0.000        53.671   130.212
-garagem_3            222.9649     30.046      7.421      0.000       164.037   281.893
-dm_vista_mar          64.5890     26.520      2.435      0.015        12.576   116.602
-quartos_4             69.5159     22.549      3.083      0.002        25.291   113.740
+Intercept              2.2297    103.615      0.022      0.983      -200.990   205.450
+dist_saude_privada    83.3687     33.218      2.510      0.012        18.218   148.520
+dist_lagoa           166.6764     26.546      6.279      0.000       114.612   218.741
+preco_lag              0.1964      0.038      5.236      0.000         0.123     0.270
+area                   7.7198      0.198     39.024      0.000         7.332     8.108
+dm_elevador          -66.9955     21.561     -3.107      0.002      -109.283   -24.708
+dm_frente            122.6890     29.286      4.189      0.000        65.251   180.127
+dist_favela           31.9349     10.179      3.137      0.002        11.972    51.898
+dist_logradouro      184.3335     28.153      6.547      0.000       129.116   239.551
+dist_bombeiro         24.1445     11.315      2.134      0.033         1.953    46.336
+dist_praia           -35.8592     10.985     -3.264      0.001       -57.403   -14.315
+dm_duplex            155.6286     68.381      2.276      0.023        21.513   289.744
+suites_4             267.8700     50.234      5.332      0.000       169.346   366.394
+suites_2              98.0462     32.230      3.042      0.002        34.833   161.259
+suites_3              83.0584     37.461      2.217      0.027         9.586   156.531
+suites_1              72.5388     24.754      2.930      0.003        23.988   121.090
+garagem_4            613.1551     60.169     10.191      0.000       495.147   731.164
+dm_cobertura        -244.0934     56.774     -4.299      0.000      -355.444  -132.743
+garagem_2             91.4026     19.532      4.680      0.000        53.094   129.711
+garagem_3            225.5933     30.177      7.476      0.000       166.407   284.779
+dm_vista_mar          61.7235     26.485      2.331      0.020         9.779   113.668
+dist_metro           -20.1768      4.097     -4.925      0.000       -28.213   -12.141
+quartos_4             66.0013     22.584      2.923      0.004        21.708   110.295
 ==============================================================================
-Omnibus:                      685.350   Durbin-Watson:                   2.007
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):             7040.878
-Skew:                           1.482   Prob(JB):                         0.00
-Kurtosis:                      12.208   Cond. No.                     6.59e+17
+Omnibus:                      679.739   Durbin-Watson:                   2.023
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             6947.159
+Skew:                           1.468   Prob(JB):                         0.00
+Kurtosis:                      12.149   Cond. No.                     2.14e+04
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The smallest eigenvalue is 2.03e-25. This might indicate that there are
-strong multicollinearity problems or that the design matrix is singular.
+[2] The condition number is large, 2.14e+04. This might indicate that there are
+strong multicollinearity or other numerical problems.

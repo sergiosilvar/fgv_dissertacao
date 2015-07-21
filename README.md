@@ -1,5 +1,3 @@
 ﻿# Dissertação de mestrado
 
- - [IPython Notebooks](http://nbviewer.ipython.org/github/srodriguex/fgv_dissertacao/blob/master/ipython_notebook/Acompanhamento.ipynb) - Lista de notebooks do IPython com a construção de características e resultados.
- - [Banco de Dados PostGIS](ZAP_postgresql.backup.tar.zip) - Backup do banco de dados do PostGIS.
- - [Texto](texto/mestrado.pdf) - Texto da dissertação. Em construção.
+ - [Código fonte](http://nbviewer.ipython.org/github/srodriguex/fgv_dissertacao/blob/master/ipython_notebook/Lista%20de%20Arquivos.ipynb) - Lista de notebooks do IPython  e código fonte para a construção e tratamento das características e execução dos modelos de regressão.

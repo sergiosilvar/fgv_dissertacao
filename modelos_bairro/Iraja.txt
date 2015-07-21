@@ -1,10 +1,10 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.728
-Model:                            OLS   Adj. R-squared:                  0.714
-Method:                 Least Squares   F-statistic:                     52.47
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):           1.49e-40
-Time:                        18:32:17   Log-Likelihood:                -931.41
+Dep. Variable:                  preco   R-squared:                       0.727
+Model:                            OLS   Adj. R-squared:                  0.713
+Method:                 Least Squares   F-statistic:                     52.32
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):           1.75e-40
+Time:                        11:53:50   Log-Likelihood:                -931.58
 No. Observations:                 166   AIC:                             1881.
 Df Residuals:                     157   BIC:                             1909.
 Df Model:                           8                                         
@@ -12,23 +12,23 @@ Covariance Type:            nonrobust
 ==============================================================================
                  coef    std err          t      P>|t|      [95.0% Conf. Int.]
 ------------------------------------------------------------------------------
-Intercept    273.9680     90.269      3.035      0.003        95.669   452.267
-suites_2     310.2640     55.194      5.621      0.000       201.245   419.283
-suites_1      84.4057     15.848      5.326      0.000        53.103   115.708
-area           2.9741      0.294     10.124      0.000         2.394     3.554
-garagem_1     46.5073     14.352      3.241      0.001        18.160    74.855
-garagem_2     59.7605     22.047      2.711      0.007        16.213   103.308
-garagem_3    111.8526     47.539      2.353      0.020        17.954   205.752
-dist_praia   -31.7764     11.478     -2.769      0.006       -54.447    -9.106
-quartos_3    -35.2785     13.567     -2.600      0.010       -62.075    -8.481
+Intercept    251.7527     92.952      2.708      0.008        68.155   435.350
+suites_2     332.3686     55.848      5.951      0.000       222.059   442.678
+suites_1      85.0108     15.959      5.327      0.000        53.488   116.534
+area           2.8886      0.288     10.033      0.000         2.320     3.457
+garagem_1     44.8734     14.398      3.117      0.002        16.434    73.313
+garagem_2     59.6380     22.071      2.702      0.008        16.044   103.232
+garagem_3    106.5494     47.607      2.238      0.027        12.517   200.582
+dist_praia   -32.1367     11.473     -2.801      0.006       -54.798    -9.476
+quartos_2     32.3743     12.780      2.533      0.012         7.131    57.617
 ==============================================================================
-Omnibus:                       72.927   Durbin-Watson:                   2.171
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              322.734
-Skew:                           1.612   Prob(JB):                     8.30e-71
-Kurtosis:                       9.022   Cond. No.                     1.28e+03
+Omnibus:                       72.942   Durbin-Watson:                   2.190
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              318.078
+Skew:                           1.619   Prob(JB):                     8.52e-70
+Kurtosis:                       8.958   Cond. No.                     1.32e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 1.28e+03. This might indicate that there are
+[2] The condition number is large, 1.32e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.

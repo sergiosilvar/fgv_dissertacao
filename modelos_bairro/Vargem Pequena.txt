@@ -1,44 +1,35 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.893
-Model:                            OLS   Adj. R-squared:                  0.865
-Method:                 Least Squares   F-statistic:                     31.23
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):           9.46e-22
-Time:                        18:33:31   Log-Likelihood:                -414.08
-No. Observations:                  72   AIC:                             860.2
-Df Residuals:                      56   BIC:                             896.6
-Df Model:                          15                                         
+Dep. Variable:                  preco   R-squared:                       0.861
+Model:                            OLS   Adj. R-squared:                  0.840
+Method:                 Least Squares   F-statistic:                     42.55
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):           3.20e-23
+Time:                        11:54:51   Log-Likelihood:                -423.66
+No. Observations:                  72   AIC:                             867.3
+Df Residuals:                      62   BIC:                             890.1
+Df Model:                           9                                         
 Covariance Type:            nonrobust                                         
-===================================================================================
-                      coef    std err          t      P>|t|      [95.0% Conf. Int.]
------------------------------------------------------------------------------------
-Intercept        4234.4080   1629.851      2.598      0.012       969.424  7499.392
-dm_vista_mar     -163.7838     46.803     -3.499      0.001      -257.542   -70.025
-dm_lateral       -100.8499     36.976     -2.727      0.009      -174.922   -26.778
-dm_closet         389.3928     60.199      6.468      0.000       268.799   509.987
-area                5.6935      0.469     12.143      0.000         4.754     6.633
-dm_portaria      -147.3949     42.367     -3.479      0.001      -232.266   -62.524
-suites_1          112.5249     26.155      4.302      0.000        60.131   164.919
-dist_logradouro  -207.4759     84.788     -2.447      0.018      -377.327   -37.625
-dist_delegacia    194.2125     81.971      2.369      0.021        30.005   358.420
-dm_hidrometro     122.8067     54.724      2.244      0.029        13.181   232.433
-dm_granito        122.8067     54.724      2.244      0.029        13.181   232.433
-dm_duplex         238.2693    110.476      2.157      0.035        16.959   459.580
-dm_terraco       -100.8499     36.976     -2.727      0.009      -174.922   -26.778
-dm_mezanino      -100.8499     36.976     -2.727      0.009      -174.922   -26.778
-dist_favela      -166.9114     72.181     -2.312      0.024      -311.507   -22.316
-dist_centro       -58.7225     24.946     -2.354      0.022      -108.695    -8.750
-dm_servico         81.4591     35.739      2.279      0.026         9.865   153.054
-dist_trem        -344.8664    142.384     -2.422      0.019      -630.095   -59.637
-suites_3         -503.4044     92.750     -5.428      0.000      -689.204  -317.605
+====================================================================================
+                       coef    std err          t      P>|t|      [95.0% Conf. Int.]
+------------------------------------------------------------------------------------
+Intercept          -26.2622     38.156     -0.688      0.494      -102.535    50.011
+dm_churrasqueira   -57.7492     25.233     -2.289      0.026      -108.189    -7.309
+dm_sala_jantar      90.9064     34.319      2.649      0.010        22.304   159.509
+suites_3          -475.3574    117.850     -4.034      0.000      -710.937  -239.778
+area                 5.7211      0.509     11.230      0.000         4.703     6.739
+suites_1           119.8216     26.423      4.535      0.000        67.003   172.640
+garagem_3          456.5102    134.705      3.389      0.001       187.238   725.782
+dm_duplex          269.2719    132.538      2.032      0.046         4.332   534.212
+dm_esquina         305.6840     70.101      4.361      0.000       165.555   445.813
+dm_terraco        -286.8761    118.101     -2.429      0.018      -522.957   -50.795
 ==============================================================================
-Omnibus:                        5.544   Durbin-Watson:                   2.034
-Prob(Omnibus):                  0.063   Jarque-Bera (JB):                8.263
-Skew:                          -0.013   Prob(JB):                       0.0161
-Kurtosis:                       4.659   Cond. No.                     1.64e+19
+Omnibus:                        9.487   Durbin-Watson:                   1.846
+Prob(Omnibus):                  0.009   Jarque-Bera (JB):               16.356
+Skew:                           0.387   Prob(JB):                     0.000281
+Kurtosis:                       5.203   Cond. No.                     1.39e+03
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The smallest eigenvalue is 2.08e-33. This might indicate that there are
-strong multicollinearity problems or that the design matrix is singular.
+[2] The condition number is large, 1.39e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

@@ -1,37 +1,31 @@
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                  preco   R-squared:                       0.713
-Model:                            OLS   Adj. R-squared:                  0.683
-Method:                 Least Squares   F-statistic:                     23.38
-Date:                Thu, 25 Jun 2015   Prob (F-statistic):           2.13e-21
-Time:                        18:32:49   Log-Likelihood:                -553.51
-No. Observations:                 105   AIC:                             1129.
-Df Residuals:                      94   BIC:                             1158.
-Df Model:                          10                                         
+Dep. Variable:                  preco   R-squared:                       0.669
+Model:                            OLS   Adj. R-squared:                  0.646
+Method:                 Least Squares   F-statistic:                     28.07
+Date:                Fri, 17 Jul 2015   Prob (F-statistic):           9.70e-21
+Time:                        11:54:14   Log-Likelihood:                -560.97
+No. Observations:                 105   AIC:                             1138.
+Df Residuals:                      97   BIC:                             1159.
+Df Model:                           7                                         
 Covariance Type:            nonrobust                                         
-===================================================================================
-                      coef    std err          t      P>|t|      [95.0% Conf. Int.]
------------------------------------------------------------------------------------
-Intercept          45.1194     39.776      1.134      0.260       -33.857   124.096
-dm_salao_jogos     61.8456     19.007      3.254      0.002        24.107    99.584
-area                1.7761      0.249      7.145      0.000         1.283     2.270
-dist_bombeiro      52.2899     22.702      2.303      0.023         7.215    97.364
-garagem_2         205.3222     34.515      5.949      0.000       136.792   273.853
-garagem_1          46.4654     11.281      4.119      0.000        24.066    68.865
-dist_logradouro   -96.6986     19.188     -5.040      0.000      -134.797   -58.601
-dm_piscina        -68.6692     24.198     -2.838      0.006      -116.715   -20.624
-dm_sauna           61.8456     19.007      3.254      0.002        24.107    99.584
-quartos_3          76.9638     31.338      2.456      0.016        14.742   139.185
-quartos_2          68.1944     28.536      2.390      0.019        11.535   124.854
-quartos_4        -179.0329     63.834     -2.805      0.006      -305.776   -52.290
+===============================================================================
+                  coef    std err          t      P>|t|      [95.0% Conf. Int.]
+-------------------------------------------------------------------------------
+Intercept       8.5605     41.449      0.207      0.837       -73.705    90.826
+area            1.8485      0.241      7.660      0.000         1.370     2.327
+dm_portaria   -40.0306     20.072     -1.994      0.049       -79.867    -0.194
+garagem_1      56.5723     11.211      5.046      0.000        34.321    78.824
+garagem_2     156.8196     33.628      4.663      0.000        90.078   223.561
+dist_metro     45.2287     10.277      4.401      0.000        24.832    65.625
+dist_trem     -64.1493     19.956     -3.214      0.002      -103.757   -24.541
+quartos_4    -206.4814     61.685     -3.347      0.001      -328.909   -84.054
 ==============================================================================
-Omnibus:                        1.510   Durbin-Watson:                   1.925
-Prob(Omnibus):                  0.470   Jarque-Bera (JB):                1.060
-Skew:                           0.225   Prob(JB):                        0.589
-Kurtosis:                       3.197   Cond. No.                     9.04e+17
+Omnibus:                        2.189   Durbin-Watson:                   1.894
+Prob(Omnibus):                  0.335   Jarque-Bera (JB):                1.672
+Skew:                           0.288   Prob(JB):                        0.434
+Kurtosis:                       3.224   Cond. No.                         925.
 ==============================================================================
 
 Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The smallest eigenvalue is 7.17e-31. This might indicate that there are
-strong multicollinearity problems or that the design matrix is singular.
